@@ -18,3 +18,5 @@ public abstract class Decorator implements Personaje{
 	
 	
 }
+
+//hola

@@ -1,11 +1,7 @@
-/sample/
-/Strategy/
-/strategy/
-/decorator/
-/state/
 /abstract_factory/
-/singleton/
-/template_method/
 /controlador/
-/patrones/
-/dg/
+/decorator/
+/singleton/
+/state/
+/strategy/
+/template_method/
