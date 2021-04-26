@@ -2,7 +2,9 @@ package decorator;
 
 public interface Personaje {
 	
-	public void info();
+	public String getNombre();
 	public void stats();
+	public String getAccion(int a);
+	public void accion();
 	
 }

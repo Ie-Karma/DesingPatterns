@@ -5,47 +5,74 @@ import decorator.*;
 
 public class main_ivan_mario {
 
+	static Personaje personaje;
+	
 	public static void main(String[] args) {
-		
+				
+		personaje = new PersonajeBase(printInfo());
 		prueba();
+				
+	}
+
+	public static void prueba() {		
 		
-		System.out.println("pues adios glipollas");
+		enemigo();
+		eleccion();
 		
 	}
 
-	@SuppressWarnings("resource")
-	public static void prueba() {
+	private static int printInfo() {
+
+	    @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
 		
-	    Scanner scanner = new Scanner(System.in);
+		System.out.println
 		
-		System.out.println("-Bienvenido a Yo, interneto, the game-\n");
-		
-		//creamos 3 plantillas de personajes para que el jugador escoja una
-		String champs[] = {"orson","dario","cheeto"};
-		int vidas[] = {20,30,35};
-		int ataques[] = {5,2,3};
-		
-		System.out.println("Escoja un champ:\n");
-		
-		for(int i = 0; i<3;i++) {
-			System.out.println((i+1) + " - "+ champs[i] + "\nVida: " + vidas[i] + "\nAtaque: " + ataques[i] + "\n");
-		}		
+				("╔══════════════════════════════════╗\n"
+			   + "║                                  ║\n"
+			   + "║           YO INTERNETO           ║\n"
+			   + "║            -THE GAME-            ║\n"
+			   + "║                                  ║\n"
+			   + "║                BY                ║\n"
+			   + "║                                  ║\n"
+			   + "║ Mario Gallego      Ivan Zabaleta ║\n"
+			   + "║                                  ║\n"
+			   + "╠══════════════════════════════════╣\n"
+			   + "║                                  ║\n"
+			   + "║          « PERSONAJES »          ║\n"
+			   + "║                                  ║\n"
+			   + "╠════════════< ORSLOK >════════════╣\n"
+			   + "║                                  ║\n"
+			   + "╠ VIDA:          20                ║\n"
+			   + "╠ ATAQUE:         5                ║\n"
+			   + "╠ DESTREZA:      10                ║\n"
+			   + "║                                  ║\n"
+			   + "╠════════════<  DARIO >════════════╣\n"
+			   + "║                                  ║\n"
+			   + "╠ VIDA:          30                ║\n"
+			   + "╠ ATAQUE:         2                ║\n"
+			   + "╠ DESTREZA:       6                ║\n"
+			   + "║                                  ║\n"
+			   + "╠════════════< CHEETO >════════════╣\n"
+			   + "║                                  ║\n"
+			   + "╠ VIDA:          35                ║\n"
+			   + "╠ ATAQUE:         4                ║\n"
+			   + "╠ DESTREZA:       4                ║\n"
+			   + "║                                  ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			   + "╔══════════════════════════════════╗\n"
+			   + "║                                  ║\n"
+			   + "║       « SELECCIONA UNO »         ║\n"
+			   + "║                                  ║\n"
+			   + "╠ ORSLOK       < 1 >               ║\n"
+			   + "╠ DARIO        < 2 >               ║\n"
+			   + "╠ CHEETO       < 3 >               ║\n"
+			   + "║                                  ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			   );
 		
 		int cha = scanner.nextInt();
-		cha -= 1;
-		
-		//se escoje una de las "plantillas" de los personajes ya creados
-		//y se envia por parametro con su nombre, vida y ataque para crear el personaje principal
-		Personaje mainChar = new PersonajeBase(champs[cha],vidas[cha],ataques[cha]);
-
-		System.out.print("okay, eres el hijo de puta de ");
-		mainChar.info();
-		mainChar.stats();
-		
-		enemigo();
-
-		eleccion();
-	
+		return (cha-1);
 	}
 
 	@SuppressWarnings({ "resource" })
@@ -57,11 +84,9 @@ public class main_ivan_mario {
 		
 		do {
 			
-			System.out.println("\n�Qu� deseas hacer?");
-			System.out.println("1 - Atacar");
-			System.out.println("2 - Beber Mahou");
-			System.out.println("3 - Pedir ayuda a Casio");
-			System.out.println("4 - Terminar");
+			System.out.println("\n¿Qué deseas hacer?");
+
+			personaje.accion();
 			
 			sel = scanner.nextInt();
 			
@@ -71,10 +96,11 @@ public class main_ivan_mario {
 			case 2:beber();break;
 			case 3:ayuda();break;
 			case 4:break;
+			case 6:personaje.stats();
 				
 			}
 			
-		}while(sel != 4);
+		}while(sel != 7);
 		
 	}
 	
