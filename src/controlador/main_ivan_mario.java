@@ -92,11 +92,19 @@ public class main_ivan_mario {
 			
 			switch(sel){
 				
-			case 1:atacar();break;
-			case 2:beber();break;
-			case 3:ayuda();break;
-			case 4:break;
+			case 1:atacar();
+			break;
+			case 2:beber();
+			break;
+			case 3:ayuda();
+			break;
+			case 4:
+			break;
+			case 5:personaje = new CheetoMartillo(personaje);
+			break;
 			case 6:personaje.stats();
+			break;
+
 				
 			}
 			

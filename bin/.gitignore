@@ -1,7 +1,2 @@
-/abstract_factory/
-/controlador/
 /decorator/
-/singleton/
-/state/
-/strategy/
-/template_method/
+/controlador/
