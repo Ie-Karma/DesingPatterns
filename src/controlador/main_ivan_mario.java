@@ -1,5 +1,4 @@
 package controlador;
-
 import java.util.Scanner;
 import decorator.*;
 
@@ -10,6 +9,9 @@ public class main_ivan_mario {
 	public static void main(String[] args) {
 				
 		personaje = new PersonajeBase(printInfo());
+		
+		
+		
 		prueba();
 				
 	}
