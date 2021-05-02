@@ -1,5 +1,7 @@
 package state;
 
+import decorator.*;
+
 public abstract class EstadoPersonaje {
 	
 	protected Personaje personaje;

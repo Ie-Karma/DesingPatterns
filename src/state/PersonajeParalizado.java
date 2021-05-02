@@ -1,4 +1,5 @@
 package state;
+import decorator.*;
 
 public class PersonajeParalizado extends EstadoPersonaje{
 	
