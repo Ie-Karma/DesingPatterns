@@ -1,15 +1,19 @@
 package state;
-
-import decorator.*;
+import decorator.PersonajeBase;
 
 public abstract class EstadoPersonaje {
 	
-	protected Personaje personaje;
+	protected PersonajeBase personaje;
 	
-	public EstadoPersonaje(Personaje personaje) {
+	public EstadoPersonaje(PersonajeBase personaje) {
 		this.personaje = personaje;
 	}
 	
-	// TODO : Repercusion de los estados
+	public abstract void setEstadoActivo();
+	public abstract void setEstadoHerido();
+	public abstract void setEstadoParalizado();
 	
+	public abstract EstadoPersonaje estadoActivo();
+	public abstract EstadoPersonaje estadoHerido();
+	public abstract EstadoPersonaje estadoParalizado();
 }

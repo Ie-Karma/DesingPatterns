@@ -19,27 +19,50 @@ public class PersonajeMartillo extends Decorator{
 
 	@Override
 	public String getNombre() {
-		return GetPersonaje().getNombre();
+		return getPersonaje().getNombre();
+	}
+	
+	@Override
+	public String getEstado() {
+		return getPersonaje().getEstado();
+	}
+
+	@Override
+	public int getVida() {
+		return getPersonaje().getVida();
+	}
+
+	@Override
+	public int getAtaque() {
+		return getPersonaje().getAtaque();
+	}
+
+	@Override
+	public int getDestreza() {
+		return getPersonaje().getDestreza();
 	}
 
 	@Override
 	public void setStats(int n, int a) {
-		GetPersonaje().setStats(n,a);		
+		getPersonaje().setStats(n,a);		
+	}
+	
+	public void setEstado(String estado) {
 	}
 
 	@Override
 	public int atacar() {
-		return GetPersonaje().atacar() + 2;
+		return getPersonaje().atacar() + 2;
 	}
 
 	@Override
 	public int recibir(int n) {
-		return GetPersonaje().recibir(n);
+		return getPersonaje().recibir(n);
 	}
 
 	@Override
 	public int esquivar() {
-		return GetPersonaje().esquivar();
+		return getPersonaje().esquivar();
 	}
 
 

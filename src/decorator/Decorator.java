@@ -6,16 +6,12 @@ public abstract class Decorator implements Personaje{
 	
 	public Decorator(Personaje a) {
 		
-		this.personaje = a;
-		
+		this.personaje = a;		
 	}
 	
-	protected Personaje GetPersonaje() {
-		
+	protected Personaje getPersonaje() {
+
 		return personaje;
-		
 	}
-	
-	
 }
 
