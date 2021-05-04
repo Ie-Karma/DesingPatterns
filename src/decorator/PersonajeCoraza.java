@@ -22,11 +22,6 @@ public class PersonajeCoraza extends Decorator{
 	}
 
 	@Override
-	public String getAccion(int a) {
-		return GetPersonaje().getAccion(a);
-	}
-
-	@Override
 	public void setStats(int n, int a) {
 		GetPersonaje().setStats(n,a);		
 	}

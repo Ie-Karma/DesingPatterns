@@ -7,17 +7,10 @@ public class PersonajeBase implements Personaje{
 	int ataque;
 	int destreza;
 	String nombre;
-	String acciones[] = new String[7];
 	
 	public PersonajeBase(int per) {
 		
 		num = per;
-		
-		acciones[0] = "Atacar";
-		acciones[1] = "Esquivar";
-		acciones[2] = "Beber Mahou";
-		acciones[5] = "Stats";
-		acciones[6] = "Terminar";
 
 		switch (per){
 		
@@ -26,8 +19,6 @@ public class PersonajeBase implements Personaje{
 				ataque = 5;
 				destreza = 6;
 				nombre = "Orslok";
-				acciones[3] = "Vapear";
-				acciones[4] = "Robar algo";
 				break;
 				
 			case 1:
@@ -35,8 +26,6 @@ public class PersonajeBase implements Personaje{
 				ataque = 2;
 				destreza = 4;
 				nombre = "Dario";
-				acciones[3] = "Hablar Portugues";
-				acciones[4] = "Coger Gafas";
 				break;
 				
 			case 2:
@@ -44,8 +33,6 @@ public class PersonajeBase implements Personaje{
 				ataque = 4;
 				destreza = 3;
 				nombre = "Cheeto";
-				acciones[3] = "Cocinar algo";
-				acciones[4] = "Coger martillo";
 				break;
 				
 		}
@@ -58,11 +45,6 @@ public class PersonajeBase implements Personaje{
 		
 	}
 	
-	@Override
-	public String getAccion(int a) {
-		return acciones[a];
-	}
-
 	@Override
 	public void setStats(int n,int a) {
 
