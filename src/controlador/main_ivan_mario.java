@@ -5,12 +5,15 @@ import decorator.*;
 public class main_ivan_mario {
 
 	static Personaje personaje;
+	static DataPrinter data;
+	static int per;
 	
 	public static void main(String[] args) {
 				
-		personaje = new PersonajeBase(printInfo());
-		
-		
+		int n = printInfo();
+		personaje = new PersonajeBase(n);
+		data = new DataPrinter(n);
+		per = n;
 		
 		prueba();
 				
@@ -88,26 +91,45 @@ public class main_ivan_mario {
 			
 			System.out.println("\n¿Qué deseas hacer?");
 
-			personaje.accion();
+			data.Accion();
 			
 			sel = scanner.nextInt();
 			
 			switch(sel){
 				
 			case 1:atacar();
-			break;
+				break;
 			case 2:beber();
-			break;
+				break;
 			case 3:ayuda();
-			break;
+				break;
 			case 4:
-			break;
+				break;
 			case 5:
-				personaje = new CheetoMartillo(personaje);
-			break;
-			case 6:personaje.stats();
-			break;
-
+				
+				if(data.getObj() == false) {
+					
+					switch (per) {
+				
+					case 0:
+						personaje = new PersonajeCoraza(personaje);
+						data.setObj(true);
+						break;
+					case 1:
+						personaje = new PersonajeGafas(personaje);
+						data.setObj(true);
+						break;
+					case 2:
+						personaje = new PersonajeMartillo(personaje);
+						data.setObj(true);
+						break;
+				
+					}
+				}
+				
+				break;
+			case 6:data.Stats(personaje);
+				break;
 				
 			}
 			

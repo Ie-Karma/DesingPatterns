@@ -57,102 +57,10 @@ public class PersonajeBase implements Personaje{
 		return nombre;
 		
 	}
-
-	@Override
-	public void stats() {
-		
-		System.out.print(
-					 "╔══════════════════════════════════╗\n"
-				   + "║            « STATS »             ║\n"
-				   + "║                                  ║\n"
-				   + "╠ VIDA <"+vida+">                        ║\n"
-				   + "║ "
-				);
-		
-		for(int i = 0; i<32;i++) {
-			
-			if(i<vida) {System.out.print("*");}
-			else {System.out.print(" ");}
-			
-		}
-		
-		System.out.print(
-						 " ║\n"
-						+ "╠ ATAQUE <"+atacar()+">                       ║\n"
-						+ "╠ DESTREZA <"+destreza+">                     ║\n"
-						+ "╠ ESTADO <NINGUNO>                 ║\n"
-						+ "║                                  ║\n"
-						+ "╚══════════════════════════════════╝\n"
-				);
-
-	}
-
+	
 	@Override
 	public String getAccion(int a) {
 		return acciones[a];
-	}
-
-	@Override
-	public void accion() {
-
-		System.out.print
-					("╔══════════════════════════════════╗\n"
-				   + "║           « ACCIONES »           ║\n"
-				   + "║                                  ║\n"
-				   + "╠ <1>       ATACAR                 ║\n"
-				   + "╠ <2>       ESQUIVAR               ║\n"
-				   + "╠ <3>       BEBER MAHOU            ║\n"
-
-		);
-		
-		switch(num) {
-		
-		case 0:
-			System.out.print
-			
-			   ( "╠ <4>       VAPEAR                 ║\n"
-			   + "╠ <5>       ROBAR ALGO             ║\n"
-					   );
-			break;
-		case 1:
-			System.out.print
-			
-			   ( "╠ <4>       HABLAR PORTUGUES       ║\n"
-			   + "╠ <5>       COGER GAFAS            ║\n"
-					   );
-			break;
-		case 2:
-			System.out.print
-			
-			   ( "╠ <4>       COCINAR ALGO           ║\n"
-			   + "╠ <5>       COGER MARTILLO         ║\n"
-					   );
-			break;
-		
-		}
-		System.out.println
-	
-		   ( "╠ <6>       STATS                  ║\n"
-		   + "╠ <7>       TERMINAR               ║\n"
-		   + "║                                  ║\n"
-		   + "╚══════════════════════════════════╝\n"
-		   );
-		
-	}
-
-	@Override
-	public int getStats(int n) {
-
-		switch (n){
-	
-			case 0: return vida;
-			case 1: return atacar();
-			case 2: return destreza;
-		
-		}
-		
-		return 0;
-		
 	}
 
 	@Override
@@ -182,6 +90,11 @@ public class PersonajeBase implements Personaje{
 	public int recibir(int n) {
 		vida -= n;
 		return vida;
+	}
+
+	@Override
+	public int esquivar() {
+		return destreza;
 	}
 
 }

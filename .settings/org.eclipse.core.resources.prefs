@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/controlador/DataPrinter.java=UTF-8
 encoding//src/controlador/main_ivan_mario.java=UTF-8
-encoding//src/decorator/CheetoMartillo.java=UTF-8
 encoding//src/decorator/PersonajeBase.java=UTF-8
+encoding//src/decorator/PersonajeCoraza.java=UTF-8
+encoding//src/decorator/PersonajeGafas.java=UTF-8
+encoding//src/decorator/PersonajeMartillo.java=UTF-8
