@@ -8,5 +8,7 @@ public interface Personaje {
 	public void accion();
 	public int getStats(int n);
 	public void setStats(int n,int a);
+	public int atacar();
+	public int recibir(int n);
 	
 }

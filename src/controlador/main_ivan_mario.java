@@ -102,7 +102,8 @@ public class main_ivan_mario {
 			break;
 			case 4:
 			break;
-			case 5:personaje = new CheetoMartillo(personaje);
+			case 5:
+				personaje = new CheetoMartillo(personaje);
 			break;
 			case 6:personaje.stats();
 			break;

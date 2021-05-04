@@ -78,7 +78,7 @@ public class PersonajeBase implements Personaje{
 		
 		System.out.print(
 						 " ║\n"
-						+ "╠ ATAQUE <"+ataque+">                       ║\n"
+						+ "╠ ATAQUE <"+atacar()+">                       ║\n"
 						+ "╠ DESTREZA <"+destreza+">                     ║\n"
 						+ "╠ ESTADO <NINGUNO>                 ║\n"
 						+ "║                                  ║\n"
@@ -146,7 +146,7 @@ public class PersonajeBase implements Personaje{
 		switch (n){
 	
 			case 0: return vida;
-			case 1: return ataque;
+			case 1: return atacar();
 			case 2: return destreza;
 		
 		}
@@ -169,6 +169,19 @@ public class PersonajeBase implements Personaje{
 	
 		}
 		
+	}
+
+	
+	@Override
+	public int atacar() {
+		return ataque;
+	}
+
+	
+	@Override
+	public int recibir(int n) {
+		vida -= n;
+		return vida;
 	}
 
 }
