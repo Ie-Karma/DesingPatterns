@@ -11,7 +11,7 @@ public class PersonajeMartillo extends Decorator{
 	   + "║     AHORA TIENES UN MARTILLO     ║\n"
 	   + "║                                  ║\n"
 	   + "║       TUS ATAQUES AUMENTAN       ║\n"
-	   + "║   	 3 PUNTOS POR ATAQUE       ║\n"
+	   + "║   	 2 PUNTOS POR ATAQUE       ║\n"
 	   + "╚══════════════════════════════════╝\n"
 				);
 		
@@ -34,7 +34,7 @@ public class PersonajeMartillo extends Decorator{
 
 	@Override
 	public int atacar() {
-		return GetPersonaje().atacar() + 3;
+		return GetPersonaje().atacar() + 2;
 	}
 
 	@Override

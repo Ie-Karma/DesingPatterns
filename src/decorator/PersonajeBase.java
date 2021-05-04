@@ -24,7 +24,7 @@ public class PersonajeBase implements Personaje{
 			case 0:
 				vida = 10;
 				ataque = 5;
-				destreza = 8;
+				destreza = 6;
 				nombre = "Orslok";
 				acciones[3] = "Vapear";
 				acciones[4] = "Robar algo";
@@ -33,7 +33,7 @@ public class PersonajeBase implements Personaje{
 			case 1:
 				vida = 15;
 				ataque = 2;
-				destreza = 6;
+				destreza = 4;
 				nombre = "Dario";
 				acciones[3] = "Hablar Portugues";
 				acciones[4] = "Coger Gafas";
@@ -42,7 +42,7 @@ public class PersonajeBase implements Personaje{
 			case 2:
 				vida = 20;
 				ataque = 4;
-				destreza = 4;
+				destreza = 3;
 				nombre = "Cheeto";
 				acciones[3] = "Cocinar algo";
 				acciones[4] = "Coger martillo";
@@ -79,13 +79,11 @@ public class PersonajeBase implements Personaje{
 		
 	}
 
-	
 	@Override
 	public int atacar() {
 		return ataque;
 	}
 
-	
 	@Override
 	public int recibir(int n) {
 		vida -= n;

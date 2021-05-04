@@ -107,26 +107,20 @@ public class main_ivan_mario {
 				break;
 			case 5:
 				
-				if(data.getObj() == false) {
-					
-					switch (per) {
+				switch (data.Objetos()) {
 				
-					case 0:
-						personaje = new PersonajeCoraza(personaje);
-						data.setObj(true);
-						break;
-					case 1:
-						personaje = new PersonajeGafas(personaje);
-						data.setObj(true);
-						break;
-					case 2:
-						personaje = new PersonajeMartillo(personaje);
-						data.setObj(true);
-						break;
+				case 0:
+					personaje = new PersonajeCoraza(personaje);
+					break;
+				case 1:
+					personaje = new PersonajeGafas(personaje);
+					break;
+				case 2:
+					personaje = new PersonajeMartillo(personaje);
+					break;
 				
-					}
 				}
-				
+								
 				break;
 			case 6:data.Stats(personaje);
 				break;

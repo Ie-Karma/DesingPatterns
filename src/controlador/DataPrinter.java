@@ -1,11 +1,15 @@
 package controlador;
 
+import java.util.Scanner;
+
 import decorator.*;
 
 public class DataPrinter {
 
 	int num;	
-	boolean obj = false;
+	boolean coraza = false;
+	boolean gafas = false;
+	boolean martillo = false;
 	
 	public DataPrinter(int n) {
 		
@@ -14,8 +18,6 @@ public class DataPrinter {
 	}
 	
 	public void Accion() {
-
-		if(obj == false) {
 			
 			System.out.print
 			("╔══════════════════════════════════╗\n"
@@ -33,82 +35,34 @@ case 0:
 	System.out.print
 	
 	   ( "╠ <4>       VAPEAR                 ║\n"
-	   + "╠ <5>       ROBAR ALGO             ║\n"
 			   );
 	break;
 case 1:
 	System.out.print
 	
 	   ( "╠ <4>       HABLAR PORTUGUES       ║\n"
-	   + "╠ <5>       COGER GAFAS            ║\n"
 			   );
 	break;
 case 2:
 	System.out.print
 	
 	   ( "╠ <4>       COCINAR ALGO           ║\n"
-	   + "╠ <5>       COGER MARTILLO         ║\n"
 			   );
 	break;
 
 }
 System.out.println
 
-   ( "╠ <6>       STATS                  ║\n"
+   ( 	   
+	 "╠ <5>       COGER OBJETO           ║\n"
+	+"╠ <6>       STATS                  ║\n"
    + "╠ <7>       TERMINAR               ║\n"
    + "║                                  ║\n"
    + "╚══════════════════════════════════╝\n"
    );
 			
-		}else {
-			
-			System.out.print
-			("╔══════════════════════════════════╗\n"
-		   + "║           « ACCIONES »           ║\n"
-		   + "║                                  ║\n"
-		   + "╠ <1>       ATACAR                 ║\n"
-		   + "╠ <2>       ESQUIVAR               ║\n"
-		   + "╠ <3>       BEBER MAHOU            ║\n"
-
-			);
-
-			switch(num) {
-
-			case 0:
-	System.out.print
-	
-	   ( "╠ <4>       VAPEAR                 ║\n"
-	   + "╠ <5>      ~ROBAR ALGO~            ║\n"
-			   );
-	break;
-case 1:
-	System.out.print
-	
-	   ( "╠ <4>       HABLAR PORTUGUES       ║\n"
-	   + "╠ <5>      ~COGER GAFAS~           ║\n"
-			   );
-	break;
-case 2:
-	System.out.print
-	
-	   ( "╠ <4>       COCINAR ALGO           ║\n"
-	   + "╠ <5>      ~COGER MARTILLO~        ║\n"
-			   );
-	break;
-
 }
-System.out.println
 
-   ( "╠ <6>       STATS                  ║\n"
-   + "╠ <7>       TERMINAR               ║\n"
-   + "║                                  ║\n"
-   + "╚══════════════════════════════════╝\n"
-   );
-		}
-		
-
-	}
-	
 	public void Stats(Personaje a) {
 		
 		System.out.print(
@@ -136,11 +90,60 @@ System.out.println
 				);
 	}
 
-	public void setObj(boolean a) {
-		obj = a;
+	public int Objetos() {
+		
+	    @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+
+		int sel = 0;
+		
+		System.out.print
+		("╔══════════════════════════════════╗\n"
+	   + "║      « OBJETOS DISPONIBLES »     ║\n"
+	   + "║                                  ║\n");
+		
+		if(coraza == false) {
+			System.out.print("║ <1> CORAZA            +2 defensa ║\n");
+		}
+		
+		if(gafas == false) {
+			System.out.print("║ <2> GAFAS            +2 destreza ║\n");
+		}
+		
+		if(martillo == false) {
+			System.out.print("║ <3> MARTILLO           +2 ataque ║\n");
+		}
+		
+		System.out.print
+		("║                                  ║\n"
+	   + "╚══════════════════════════════════╝\n");
+		
+		sel = scanner.nextInt();
+ 
+		sel -= 1;
+		
+		setObj(sel);
+		
+		return sel;
+		
 	}
-	public boolean getObj() {
-		return obj;
+	
+	private void setObj(int n) {
+		
+		switch (n) {
+		
+		case 0:
+			coraza = true;
+			break;
+		case 1:
+			gafas = true;
+			break;
+		case 2:
+			martillo = true;
+			break;
+		
+		}
+		
 	}
 	
 }
