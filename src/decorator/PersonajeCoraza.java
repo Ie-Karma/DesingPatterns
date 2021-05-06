@@ -66,4 +66,9 @@ public class PersonajeCoraza extends Decorator{
 		return getPersonaje().esquivar();
 	}
 	
+	@Override
+	public String getMundo() {
+		return getPersonaje().getMundo();
+	}
+	
 }

@@ -11,14 +11,162 @@ public class DataPrinter {
 	boolean gafas = false;
 	boolean martillo = false;
 	
-	public DataPrinter(int n) {
+	public int PrintInfo() {
+
+	    @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
 		
-		num = n;
+		System.out.println
+				("╔══════════════════════════════════╗\n"
+			   + "║                                  ║\n"
+			   + "║           YO INTERNETO           ║\n"
+			   + "║            -THE GAME-            ║\n"
+			   + "║                                  ║\n"
+			   + "║                BY                ║\n"
+			   + "║                                  ║\n"
+			   + "║ Mario Gallego      Ivan Zabaleta ║\n"
+			   + "║                                  ║\n"
+			   + "╠══════════════════════════════════╣\n"
+			   + "║                                  ║\n"
+			   + "║          « PERSONAJES »          ║\n"
+			   + "║                                  ║\n"
+			   + "╠════════════< ORSLOK >════════════╣\n"
+			   + "║                                  ║\n"
+			   + "╠ VIDA:         150                ║\n"
+			   + "╠ ATAQUE:        15                ║\n"
+			   + "╠ DESTREZA:     70%                ║\n"
+			   + "╠ MUNDO:      CALLE                ║\n"
+			   + "║                                  ║\n"
+			   + "╠════════════<  DARIO >════════════╣\n"
+			   + "║                                  ║\n"
+			   + "╠ VIDA:         200                ║\n"
+			   + "╠ ATAQUE:        10                ║\n"
+			   + "╠ DESTREZA:     50%                ║\n"
+			   + "╠ MUNDO:     JUNGLA                ║\n"
+			   + "║                                  ║\n"
+			   + "╠════════════< CHEETO >════════════╣\n"
+			   + "║                                  ║\n"
+			   + "╠ VIDA:         250                ║\n"
+			   + "╠ ATAQUE:        10                ║\n"
+			   + "╠ DESTREZA:     30%                ║\n"
+			   + "╠ MUNDO:      PLAYA                ║\n"
+			   + "║                                  ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			   + "╔══════════════════════════════════╗\n"
+			   + "║                                  ║\n"
+			   + "║       « SELECCIONA UNO »         ║\n"
+			   + "║                                  ║\n"
+			   + "╠ ORSLOK       < 1 >               ║\n"
+			   + "╠ DARIO        < 2 >               ║\n"
+			   + "╠ CHEETO       < 3 >               ║\n"
+			   + "║                                  ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			   );
+		
+		int cha = scanner.nextInt();
+		num = cha - 1;
+		
+		return (num);
+		
+	}
+
+	public void VentajaMundo() {
+		
+		System.out.print
+		("╔══════════════════════════════════╗\n"
+	   + "║                                  ║\n"
+	   + "║    « ESTAS EN TU TERRITORIO »    ║\n"
+	   + "║                                  ║\n"
+	   + "║  Luchas en tu propio territorio  ║\n"
+	   + "║       eso te proporciona :       ║\n"
+	   + "║                                  ║\n");
+		
+		switch (num) {
+		
+		case 0:
+			System.out.print
+				( "║          +5 de ataque            ║\n"
+				+ "║                                  ║\n"
+				+ "╚══════════════════════════════════╝\n");
+			break;
+		case 1:
+			System.out.print
+			   	( "║           +20 de vida            ║\n"
+			   	+ "║                                  ║\n"
+			   	+ "╚══════════════════════════════════╝\n");
+			break;
+		case 2:
+			System.out.print
+				( "║          +3 de destreza          ║\n"
+				+ "║                                  ║\n"
+				+ "╚══════════════════════════════════╝\n");
+			break;
+		
+		}
 		
 	}
 	
-	public DataPrinter() {
-				
+	public void InfoMundo(int n) {
+		
+		System.out.print
+		("╔══════════════════════════════════╗\n"
+	   + "║                                  ║\n"
+	   + "║        TE ENCUENTRAS EN          ║\n");
+		
+		switch (n) {
+		
+		case 0:
+			System.out.print
+			( "║          « LA CALLE »            ║\n"
+			+ "║                                  ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║  Territorio con contaminacion,   ║\n"
+			+ "║    mucho ruido y muy poblado     ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║      En el destaca Orslok        ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║ Hay que tener mucho cuidado con  ║\n"
+			+ "║            los MDLR              ║\n"
+			+ "║   muy peligrosos en La Calle     ║\n"
+			+ "║                                  ║\n"
+			+ "╚══════════════════════════════════╝\n");
+			break;
+		case 1:
+			System.out.print
+			( "║          « LA JUNGLA »           ║\n"
+			+ "║                                  ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║      Territorio desconocido      ║\n"
+			+ "║    solo se escuchan animales     ║\n"
+			+ "║         no hay personas          ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║      En el destaca Dario         ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║ Hay que tener mucho cuidado con  ║\n"
+			+ "║        Frank de la jungla        ║\n"
+			+ "║   se conoce La Jungla entera     ║\n"
+			+ "║                                  ║\n"
+			+ "╚══════════════════════════════════╝\n");
+			break;
+		case 2:
+			System.out.print
+			( "║          « LA PLAYA »            ║\n"
+			+ "║                                  ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║    Territorio muy caluroso,      ║\n"
+			+ "║    mucho ruido y muy poblado     ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║      En el destaca Cheeto        ║\n"
+			+ "╠══════════════════════════════════╣\n"
+			+ "║ Hay que tener mucho cuidado con  ║\n"
+			+ "║           los Guiris             ║\n"
+			+ "║      maestros del despiste       ║\n"
+			+ "║                                  ║\n"
+			+ "╚══════════════════════════════════╝\n");
+			break;
+		
+		}
+		
 	}
 	
 	public void Accion() {

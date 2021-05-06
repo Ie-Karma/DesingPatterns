@@ -8,8 +8,10 @@ public class PersonajeBase implements Personaje{
 	public int statsDario[] = {200,10,5};
 	public int statsCheeto[] = {250,20,3};
 	
+	
 	// Atributos del Personaje
 	int num;
+	private String mundo;
 	private String nombre;
 	private String estado;
 	private int vida;
@@ -26,14 +28,17 @@ public class PersonajeBase implements Personaje{
 		case 0:
 			vida = statsOrslok[0];
 			nombre = "Orslok";
+			mundo = "Calle";
 			break;
 		case 1:
 			vida = statsDario[0];
 			nombre = "Dario";
+			mundo = "Jungla";
 			break;
 		case 2:
 			vida = statsCheeto[0];
 			nombre = "Cheeto";
+			mundo = "Playa";
 			break;			
 		}
 		
@@ -70,7 +75,14 @@ public class PersonajeBase implements Personaje{
 			break;
 			case 1:  ataque = val;
 			break;
-			case 2:  destreza = val;
+			case 2:
+				destreza = val;
+				if(destreza >= 10) {
+					destreza = 10;
+				}
+				if(destreza < 0) {
+					destreza = 0;
+				}
 			break;
 		}		
 		
@@ -127,5 +139,9 @@ public class PersonajeBase implements Personaje{
 	@Override
 	public int esquivar() {
 		return destreza;
+	}
+
+	public String getMundo() {
+		return mundo;
 	}
 }

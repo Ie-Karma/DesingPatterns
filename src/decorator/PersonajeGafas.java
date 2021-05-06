@@ -64,4 +64,10 @@ public class PersonajeGafas extends Decorator{
 	public int esquivar() {
 		return getPersonaje().esquivar()+2;
 	}
+	
+	@Override
+	public String getMundo() {
+		return getPersonaje().getMundo();
+	}
+	
 }

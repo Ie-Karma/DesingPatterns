@@ -1,88 +1,35 @@
 package controlador;
 import java.util.Scanner;
 import decorator.*;
-import state.*;
 
 public class main_ivan_mario {
 
 	static Personaje personaje;
 	static DataPrinter data;
 	static int per;
+	static String mundo;
 	
 	public static void main(String[] args) {
 				
-		int n = printInfo();
+		data = new DataPrinter();
+		int n = data.PrintInfo();
 		personaje = new PersonajeBase(n);
-		data = new DataPrinter(n);
 		per = n;
 		
-		prueba();
+		Prueba();
 				
 	}
 
-	public static void prueba() {		
+	public static void Prueba() {		
 		
-		enemigo();
-		eleccion();
+		Enemigo();
+		Mundo();
+		Eleccion();
 		
-	}
-
-	private static int printInfo() {
-
-	    @SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		
-		System.out.println
-		
-				("╔══════════════════════════════════╗\n"
-			   + "║                                  ║\n"
-			   + "║           YO INTERNETO           ║\n"
-			   + "║            -THE GAME-            ║\n"
-			   + "║                                  ║\n"
-			   + "║                BY                ║\n"
-			   + "║                                  ║\n"
-			   + "║ Mario Gallego      Ivan Zabaleta ║\n"
-			   + "║                                  ║\n"
-			   + "╠══════════════════════════════════╣\n"
-			   + "║                                  ║\n"
-			   + "║          « PERSONAJES »          ║\n"
-			   + "║                                  ║\n"
-			   + "╠════════════< ORSLOK >════════════╣\n"
-			   + "║                                  ║\n"
-			   + "╠ VIDA:          20                ║\n"
-			   + "╠ ATAQUE:         5                ║\n"
-			   + "╠ DESTREZA:      10                ║\n"
-			   + "║                                  ║\n"
-			   + "╠════════════<  DARIO >════════════╣\n"
-			   + "║                                  ║\n"
-			   + "╠ VIDA:          30                ║\n"
-			   + "╠ ATAQUE:         2                ║\n"
-			   + "╠ DESTREZA:       6                ║\n"
-			   + "║                                  ║\n"
-			   + "╠════════════< CHEETO >════════════╣\n"
-			   + "║                                  ║\n"
-			   + "╠ VIDA:          35                ║\n"
-			   + "╠ ATAQUE:         4                ║\n"
-			   + "╠ DESTREZA:       4                ║\n"
-			   + "║                                  ║\n"
-			   + "╚══════════════════════════════════╝\n"
-			   + "╔══════════════════════════════════╗\n"
-			   + "║                                  ║\n"
-			   + "║       « SELECCIONA UNO »         ║\n"
-			   + "║                                  ║\n"
-			   + "╠ ORSLOK       < 1 >               ║\n"
-			   + "╠ DARIO        < 2 >               ║\n"
-			   + "╠ CHEETO       < 3 >               ║\n"
-			   + "║                                  ║\n"
-			   + "╚══════════════════════════════════╝\n"
-			   );
-		
-		int cha = scanner.nextInt();
-		return (cha-1);
 	}
 
 	@SuppressWarnings({ "resource" })
-	private static void eleccion(){
+	private static void Eleccion(){
 		
 	    Scanner scanner = new Scanner(System.in);
 
@@ -153,12 +100,11 @@ public class main_ivan_mario {
 				
 			}
 
-			
 		}while(sel != 7);
 		
 	}
 	
-	private static void enemigo() {
+	private static void Enemigo() {
 		
 		String enemigo[] = {"lobo","girafa","perro","gato"};
 		
@@ -166,7 +112,37 @@ public class main_ivan_mario {
 		ene = (int)(Math.random()*3);
 			
 		//abstract factory
-		System.out.println("\nte toca luchar contra " + enemigo[ene] + "\n");
+		System.out.println("\nTe toca luchar contra " + enemigo[ene] + "\n");
+			
+	}
+	
+	private static void Mundo() {
+		
+		String munrand[] = {"Calle","Jungla","Playa"};
+		
+		int rand = (int)(Math.random()*3);
+		mundo = munrand[rand];
+					
+		data.InfoMundo(rand);
+		
+		if(mundo == personaje.getMundo()) {
+			
+			data.VentajaMundo();
+			
+			switch(per) {
+			
+			case 0:
+				personaje.setStats(1, 20);
+				break;
+			case 1:
+				personaje.setStats(0, 220);
+				break;
+			case 2:
+				personaje.setStats(2, 6);
+				break;
+			}
+			
+		}
 			
 	}
 	
