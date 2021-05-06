@@ -15,4 +15,5 @@ public interface Personaje {
 	public int atacar();
 	public int recibir(int n);
 	public int esquivar();
+	
 }

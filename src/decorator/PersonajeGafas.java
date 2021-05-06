@@ -47,6 +47,7 @@ public class PersonajeGafas extends Decorator{
 	}
 	
 	public void setEstado(String estado) {
+		getPersonaje().setEstado(estado);
 	}
 
 	@Override

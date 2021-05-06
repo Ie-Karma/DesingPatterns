@@ -9,7 +9,6 @@ public class PersonajeActivo extends EstadoPersonaje {
 	
 	public void setEstadoActivo() {
 		
-		personaje.setEstado("Estado Activo");
 		
 		if(personaje.getNombre() == "Orslok") {
 			personaje.setStats(1, personaje.statsOrslok[1]);
@@ -25,6 +24,7 @@ public class PersonajeActivo extends EstadoPersonaje {
 			personaje.setStats(1, personaje.statsCheeto[1]);
 			personaje.setStats(2, personaje.statsCheeto[2]);
 		}
+		
 	}
 	
 	public void setEstadoHerido() {

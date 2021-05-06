@@ -48,6 +48,7 @@ public class PersonajeMartillo extends Decorator{
 	}
 	
 	public void setEstado(String estado) {
+		getPersonaje().setEstado(estado);
 	}
 
 	@Override

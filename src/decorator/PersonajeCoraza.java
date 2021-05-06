@@ -43,6 +43,7 @@ public class PersonajeCoraza extends Decorator{
 
 	@Override
 	public void setEstado(String estado) {
+		getPersonaje().setEstado(estado);
 	}
 
 	@Override

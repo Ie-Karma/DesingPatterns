@@ -1,6 +1,7 @@
 package controlador;
 import java.util.Scanner;
 import decorator.*;
+import state.*;
 
 public class main_ivan_mario {
 
@@ -91,41 +92,67 @@ public class main_ivan_mario {
 			
 			System.out.println("\n¿Qué deseas hacer?");
 
-			data.Accion();
-			
-			sel = scanner.nextInt();
-			
-			switch(sel){
+			if(personaje.getEstado() != "Paralizado") {
 				
-			case 1:atacar();
-				break;
-			case 2:beber();
-				break;
-			case 3:ayuda();
-				break;
-			case 4:
-				break;
-			case 5:
+				data.Accion();
 				
-				switch (data.Objetos()) {
+				sel = scanner.nextInt();
 				
-				case 0:
-					personaje = new PersonajeCoraza(personaje);
+				switch(sel){
+					
+				case 1://ATACAR
 					break;
-				case 1:
-					personaje = new PersonajeGafas(personaje);
+				case 2://ESQUIVAR
 					break;
-				case 2:
-					personaje = new PersonajeMartillo(personaje);
+				case 3://BEBER MAHOU
+					personaje.setEstado("Paralizado");
 					break;
-				
+				case 4://VAPEAR
+					data.InfoSanadora(personaje);
+					break;
+				case 5://COGER OBJETO
+					
+					switch (data.Objetos()) {
+					
+					case 0:
+						personaje = new PersonajeCoraza(personaje);
+						break;
+					case 1:
+						personaje = new PersonajeGafas(personaje);
+						break;
+					case 2:
+						personaje = new PersonajeMartillo(personaje);
+						break;
+					
+					}
+									
+					break;
+				case 6://STATS
+					data.Stats(personaje);
+					break;
+					
 				}
-								
-				break;
-			case 6:data.Stats(personaje);
-				break;
+				
+			}else {
+				
+				data.AccionParalizado();
+				
+				sel = scanner.nextInt();
+				
+				switch(sel){
+				
+				case 4://VAPEAR
+					data.InfoSanadora(personaje);
+					personaje.setEstado("Activo");
+					break;			
+				case 6://STATS
+					data.Stats(personaje);
+					break;
+					
+				}
 				
 			}
+
 			
 		}while(sel != 7);
 		
@@ -141,26 +168,6 @@ public class main_ivan_mario {
 		//abstract factory
 		System.out.println("\nte toca luchar contra " + enemigo[ene] + "\n");
 			
-	}
-
-	private static void atacar() {
-		
-		//strategy
-		System.out.println("atacas");
-		
-	}
-	
-	private static void beber() {
-		
-		//decorator
-		System.out.println("bebes una mahou");
-		
-	}
-	
-	private static void ayuda() {
-		
-		System.out.println("casio te pone musica epica");
-		
 	}
 	
 }

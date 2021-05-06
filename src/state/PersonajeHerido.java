@@ -15,8 +15,6 @@ public class PersonajeHerido extends EstadoPersonaje {
 		
 		int tmp;
 		
-		personaje.setEstado("Estado Herido");
-
 		tmp = personaje.getAtaque()-5;
 		personaje.setStats(1, tmp);
 		

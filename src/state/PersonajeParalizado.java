@@ -1,10 +1,13 @@
 package state;
+import controlador.DataPrinter;
 import decorator.*;
 
 public class PersonajeParalizado extends EstadoPersonaje{
 	
 	public PersonajeParalizado(PersonajeBase personaje) {
 		super(personaje);
+		DataPrinter data = new DataPrinter();
+		data.InfoParalizado();
 	}
 	
 	public void setEstadoActivo() {
@@ -17,9 +20,9 @@ public class PersonajeParalizado extends EstadoPersonaje{
 	
 	public void setEstadoParalizado() {
 		
-		personaje.setEstado("Estado Paralizado");
 		personaje.setStats(1, 0); 
 		personaje.setStats(2, 0);	
+		
 	}
 	
 	public EstadoPersonaje estadoActivo() {

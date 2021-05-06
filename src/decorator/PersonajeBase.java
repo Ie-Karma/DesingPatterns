@@ -2,15 +2,14 @@ package decorator;
 import state.*;
 
 public class PersonajeBase implements Personaje{
-	
-	private int num;
-	
+		
 	// Stats inciales {vida, ataque, destreza}
-	public int statsOrslok[] = {150,15,20};
-	public int statsDario[] = {200,10,15};
-	public int statsCheeto[] = {250,20,10};
+	public int statsOrslok[] = {150,15,7};
+	public int statsDario[] = {200,10,5};
+	public int statsCheeto[] = {250,20,3};
 	
 	// Atributos del Personaje
+	int num;
 	private String nombre;
 	private String estado;
 	private int vida;
@@ -20,9 +19,9 @@ public class PersonajeBase implements Personaje{
 	protected EstadoPersonaje estadoPersonaje;
 	
 	public PersonajeBase(int per) {
-		
+				
 		num = per;
-
+		
 		switch (per){
 		case 0:
 			vida = statsOrslok[0];
@@ -39,30 +38,8 @@ public class PersonajeBase implements Personaje{
 		}
 		
 		estadoPersonaje = new PersonajeActivo(this);
+		setEstado("Activo");
 		
-		/* CAMBIO: El estado activo del personaje establece sus stats ataque y destreza por defecto
-		 * 
-		switch (per){
-			case 0:
-				vida = statsOrslok[0];
-				ataque = statsOrslok[1];
-				destreza = statsOrslok[2];
-				nombre = "Orslok";
-				break;
-			case 1:
-				vida = statsDario[0];
-				ataque = statsDario[1];
-				destreza = statsDario[2];
-				nombre = "Dario";
-				break;
-			case 2:
-				vida = statsCheeto[0];
-				ataque = statsCheeto[1];
-				destreza = statsCheeto[2];
-				nombre = "Cheeto";
-				break;			
-		}
-		*/	
 	}
 	
 	public String getNombre() {
@@ -96,10 +73,30 @@ public class PersonajeBase implements Personaje{
 			case 2:  destreza = val;
 			break;
 		}		
+		
 	}
 	
 	public void setEstado(String estado) {
+		
+		switch(estado) {
+		
+		case ("Activo"):
+			estadoPersonaje = estadoPersonaje.estadoActivo();
+			estadoPersonaje.setEstadoActivo();
+			break;
+		case ("Herido"):
+			estadoPersonaje = estadoPersonaje.estadoHerido();
+			estadoPersonaje.setEstadoHerido();
+			break;
+		case ("Paralizado"):
+			estadoPersonaje = estadoPersonaje.estadoParalizado();
+			estadoPersonaje.setEstadoParalizado();
+			break;
+		
+		}
+		
 		this.estado = estado;
+		
 	}
 	
 	@Override
@@ -110,6 +107,20 @@ public class PersonajeBase implements Personaje{
 	@Override
 	public int recibir(int n) {
 		vida -= n;
+		
+		switch (num) {
+		
+		case 0:
+			statsOrslok[0] = vida;
+			break;
+		case 1:
+			statsDario[0] = vida;
+			break;
+		case 2:
+			statsCheeto[0] = vida;
+			break;
+		}
+		
 		return vida;
 	}
 
