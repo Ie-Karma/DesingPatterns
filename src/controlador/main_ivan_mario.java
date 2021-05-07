@@ -1,5 +1,7 @@
 package controlador;
 import java.util.Scanner;
+
+import abstract_factory.*;
 import decorator.*;
 
 public class main_ivan_mario {
@@ -8,9 +10,11 @@ public class main_ivan_mario {
 	static DataPrinter data;
 	static int per;
 	static String mundo;
+	static EnemyFactory enemy;
+	static GameController juego;
 	
-	public static void main(String[] args) {
-				
+	public static void main(String[] args) {		
+			
 		data = new DataPrinter();
 		int n = data.PrintInfo();
 		personaje = new PersonajeBase(n);
@@ -22,8 +26,8 @@ public class main_ivan_mario {
 
 	public static void Prueba() {		
 		
-		Enemigo();
 		Mundo();
+		Enemigo();
 		Eleccion();
 		
 	}
@@ -76,6 +80,7 @@ public class main_ivan_mario {
 					break;
 				case 6://STATS
 					data.Stats(personaje);
+					data.EnemyStats(juego);
 					break;
 					
 				}
@@ -94,6 +99,7 @@ public class main_ivan_mario {
 					break;			
 				case 6://STATS
 					data.Stats(personaje);
+					data.EnemyStats(juego);
 					break;
 					
 				}
@@ -105,14 +111,24 @@ public class main_ivan_mario {
 	}
 	
 	private static void Enemigo() {
-		
-		String enemigo[] = {"lobo","girafa","perro","gato"};
-		
-		int ene;
-		ene = (int)(Math.random()*3);
-			
+							
 		//abstract factory
-		System.out.println("\nTe toca luchar contra " + enemigo[ene] + "\n");
+				
+		switch(mundo) {
+		
+		case "Calle":
+			enemy = new EnemigosCalle();
+			break;
+		case "Jungla":
+			enemy = new EnemigosJungla();
+			break;
+		case "Playa":
+			enemy = new EnemigosPlaya();
+			break;
+		}
+				
+		juego = new GameController((int)(Math.random()*3),enemy);
+		juego.Info();
 			
 	}
 	

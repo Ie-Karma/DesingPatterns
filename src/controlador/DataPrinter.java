@@ -2,6 +2,7 @@ package controlador;
 
 import java.util.Scanner;
 
+import abstract_factory.GameController;
 import decorator.*;
 
 public class DataPrinter {
@@ -261,6 +262,30 @@ System.out.println
 				);
 	}
 
+	public void EnemyStats(GameController e) {
+		
+		System.out.printf(
+				 "╔══════════════════════════════════╗\n"
+			   + "║         « ENEMY STATS »          ║\n"
+			   + "║                                  ║\n"
+			   + "╠ VIDA <%03d>                       ║\n"
+			   + "║ ",e.Stats(false, 0, 0));
+		for(int i = 0; i<32;i++) {
+			
+			if(i<(e.Stats(false, 0, 0)/10)) {System.out.print("*");}
+			else {System.out.print(" ");}
+			
+		}
+		System.out.printf(
+				" ║\n"
+			   + "╠ ATAQUE <%02d>                      ║\n"
+		       + "╠ DESTREZA <%02d>                    ║\n"
+			   + "║                                  ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			,e.Stats(false, 1, 0),e.Stats(false, 2, 0));
+		
+	}
+	
 	public int Objetos() {
 		
 	    @SuppressWarnings("resource")
