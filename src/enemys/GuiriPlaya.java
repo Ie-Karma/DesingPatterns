@@ -10,7 +10,7 @@ public class GuiriPlaya implements Guiri{
 	
 	public GuiriPlaya(int v, int a, int d) {
 		
-		vida = v;
+		vida = v+20;
 		ataque = a;
 		destreza = d;
 		
@@ -26,6 +26,9 @@ public class GuiriPlaya implements Guiri{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║  \"Yo acostumbrado a sol playa\"   ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║    El Guiri se conoce la playa   ║\n"
+	   + "║         +20 pts de vida          ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"

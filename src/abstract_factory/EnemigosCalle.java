@@ -6,6 +6,8 @@ import enemys.MDLRCalle;
 
 public class EnemigosCalle implements EnemyFactory{
 
+	//inicializamos los distintos enemigos con su variacion dependiendo del mundo
+	
 	@Override
 	public MDLR creaMDLR(int vida, int ataque, int destreza) {
 		return new MDLRCalle(vida,ataque,destreza);

@@ -12,7 +12,7 @@ public class FrankPlaya implements Frank{
 		
 		vida = v;
 		ataque = a;
-		destreza = d;
+		destreza = d-2;
 		
 	}
 	
@@ -26,6 +26,9 @@ public class FrankPlaya implements Frank{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║  \"Deberia ir a supervivientes\"   ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║    Frank no conoce la playa      ║\n"
+	   + "║        -2 pts de destreza        ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"

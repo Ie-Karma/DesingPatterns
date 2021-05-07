@@ -11,8 +11,8 @@ public class MDLRCalle implements MDLR{
 	public MDLRCalle(int v, int a, int d) {
 		
 		vida = v;
-		ataque = a;
-		destreza = d;
+		ataque = a+5;
+		destreza = d+3;
 				
 	}
 
@@ -26,6 +26,10 @@ public class MDLRCalle implements MDLR{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║  \"Tas en mi territorio manin\"    ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║      El MDLR es de pura calle    ║\n"
+	   + "║         +5 pts de ataque         ║\n"
+	   + "║        +3 pts de destreza        ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"

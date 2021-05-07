@@ -12,7 +12,7 @@ public class MDLRJungla implements MDLR{
 		
 		vida = v;
 		ataque = a;
-		destreza = d;
+		destreza = d-3;
 		
 	}
 	
@@ -26,6 +26,9 @@ public class MDLRJungla implements MDLR{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║      \"¿Ande estamos loko?\"       ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║   El MDLR no sabe ni donde esta  ║\n"
+	   + "║       -3 pts de destreza         ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"

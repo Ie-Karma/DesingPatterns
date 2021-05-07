@@ -10,7 +10,7 @@ public class GuiriJungla implements Guiri{
 	
 	public GuiriJungla(int v, int a, int d) {
 		
-		vida = v;
+		vida = v-10;
 		ataque = a;
 		destreza = d;
 		
@@ -26,6 +26,9 @@ public class GuiriJungla implements Guiri{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║     \"Aqui no ponerme moreno\"     ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║     El Guiri van en chanclas     ║\n"
+	   + "║         -10 pts de vida          ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"

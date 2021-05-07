@@ -1,7 +1,6 @@
 package controlador;
 
 import java.util.Scanner;
-
 import abstract_factory.GameController;
 import decorator.*;
 
@@ -451,6 +450,15 @@ System.out.println
 			   + "║           Para volver            ║\n"
 			   + "╚══════════════════════════════════╝\n"
 			);
+		
+	}
+	
+	public void End() {
+		
+		System.out.print
+		("╔══════════════════════════════════╗\n"
+	   + "║           « THE END »            ║\n"
+	   + "╚══════════════════════════════════╝\n");
 		
 	}
 	

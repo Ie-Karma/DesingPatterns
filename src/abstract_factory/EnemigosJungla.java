@@ -6,6 +6,8 @@ import enemys.MDLRJungla;
 
 public class EnemigosJungla implements EnemyFactory{
 
+	//inicializamos los distintos enemigos con su variacion dependiendo del mundo
+	
 	@Override
 	public MDLR creaMDLR(int vida, int ataque, int destreza) {
 		return new MDLRJungla(vida,ataque,destreza);

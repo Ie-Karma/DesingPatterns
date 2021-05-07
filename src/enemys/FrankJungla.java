@@ -12,7 +12,7 @@ public class FrankJungla implements Frank{
 		
 		vida = v;
 		ataque = a;
-		destreza = d;
+		destreza = d+2;
 		
 	}
 	
@@ -26,6 +26,9 @@ public class FrankJungla implements Frank{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║   \"MI TERRITORIO ES DISCOVERY\"   ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║  Frank conoce muy bien la jungla ║\n"
+	   + "║        +2 pts de destreza        ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"

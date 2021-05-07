@@ -2,6 +2,10 @@ package decorator;
 
 public class PersonajeCoraza extends Decorator{
 
+	
+	//tipo de clase que extiende del decorador para cambiar las distintas funciones y/o atributos del personaje
+	//en este caso el personaje recibe 2 pts menos por ataque
+	//esto se determina en la funcion recibir con n-2
 	public PersonajeCoraza(Personaje a) {
 		
 		super(a);

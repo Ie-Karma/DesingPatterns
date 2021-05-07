@@ -10,7 +10,7 @@ public class MDLRPlaya implements MDLR{
 	
 	public MDLRPlaya(int v, int a, int d) {
 		
-		vida = v;
+		vida = v-10;
 		ataque = a;
 		destreza = d;
 		
@@ -26,6 +26,9 @@ public class MDLRPlaya implements MDLR{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║  \"Hace un calor de lokos mano\"   ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║     El MDLR se muere de calor    ║\n"
+	   + "║         -10 pts de vida          ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"

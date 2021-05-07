@@ -108,6 +108,8 @@ public class main_ivan_mario {
 
 		}while(sel != 7);
 		
+		data.End();
+		
 	}
 	
 	private static void Enemigo() {

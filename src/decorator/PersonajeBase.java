@@ -22,6 +22,8 @@ public class PersonajeBase implements Personaje{
 	
 	public PersonajeBase(int per) {
 				
+		//definimos un tipo de personaje con sus propias Stats 
+		//en funcion del elegido por el usuario
 		num = per;
 		
 		switch (per){
@@ -42,6 +44,7 @@ public class PersonajeBase implements Personaje{
 			break;			
 		}
 		
+		//Definimos tambien sus estado activo para empezar la partida
 		estadoPersonaje = new PersonajeActivo(this);
 		setEstado("Activo");
 		
@@ -70,6 +73,9 @@ public class PersonajeBase implements Personaje{
 	@Override
 	public void setStats(int n,int val) {
 
+		//usamos este metodo para cambiar los valores de los parametros principales del personaje
+		//en el primer int n definimos el parametro a cambiar 
+		//y en el segundo int val definimos el nuevo valor
 		switch (n){
 			case 0:  vida = val;
 			break;
@@ -90,6 +96,7 @@ public class PersonajeBase implements Personaje{
 	
 	public void setEstado(String estado) {
 		
+		//igualamos el estado del personaje al nuevo estado enviado desde el Main
 		switch(estado) {
 		
 		case ("Activo"):
@@ -118,6 +125,10 @@ public class PersonajeBase implements Personaje{
 
 	@Override
 	public int recibir(int n) {
+		
+		//Usamos este metodo para restarle una cantidad de vida al personaje
+		//Restamos esa cantidad directamente en el array de stats 
+		//para que cuando cambie de estados no vuelva a resetearse
 		vida -= n;
 		
 		switch (num) {

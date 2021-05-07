@@ -6,6 +6,8 @@ import enemys.MDLRPlaya;
 
 public class EnemigosPlaya implements EnemyFactory{
 
+	//inicializamos los distintos enemigos con su variacion dependiendo del mundo
+
 	@Override
 	public MDLR creaMDLR(int vida, int ataque, int destreza) {
 		return new MDLRPlaya(vida,ataque,destreza);

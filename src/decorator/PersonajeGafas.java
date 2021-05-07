@@ -2,6 +2,10 @@ package decorator;
 
 public class PersonajeGafas extends Decorator{
 
+	//tipo de clase que extiende del decorador para cambiar las distintas funciones y/o atributos del personaje
+	//en este caso el personaje gana 2 puntos de destreza
+	//esto se define en la funcion esquivar()+2
+	
 	public PersonajeGafas(Personaje a) {
 		
 		super(a);

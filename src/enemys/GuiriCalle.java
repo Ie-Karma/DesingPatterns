@@ -11,7 +11,7 @@ public class GuiriCalle implements Guiri{
 	public GuiriCalle(int v, int a, int d) {
 		
 		vida = v;
-		ataque = a;
+		ataque = a-1;
 		destreza = d;
 		
 	}
@@ -26,6 +26,9 @@ public class GuiriCalle implements Guiri{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║    \"you know where ibiza is?\"    ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║  El Guiri se cansa por la calle  ║\n"
+	   + "║         -1 pts de ataque         ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"

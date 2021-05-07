@@ -12,7 +12,7 @@ public class FrankCalle implements Frank{
 		
 		vida = v;
 		ataque = a;
-		destreza = d;
+		destreza = d-3;
 		
 	}
 	
@@ -26,6 +26,9 @@ public class FrankCalle implements Frank{
 	   + "║                                  ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "║     \"¿Aqui no hay animales?\"     ║\n"
+	   + "╠══════════════════════════════════╣\n"
+	   + "║    Frank no conoce la ciudad     ║\n"
+	   + "║        -3 pts de destreza        ║\n"
 	   + "╠══════════════════════════════════╣\n"
 	   + "╠ VIDA <%03d>                       ║\n"
 	   + "╠ ATAQUE <%02d>                      ║\n"
