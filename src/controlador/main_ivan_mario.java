@@ -3,15 +3,24 @@ import java.util.Scanner;
 
 import abstract_factory.*;
 import decorator.*;
+import singleton.Singleton;
+import strategy.*;
+import template_method.*;
 
 public class main_ivan_mario {
 
-	static Personaje personaje;
-	static DataPrinter data;
-	static int per;
-	static String mundo;
-	static EnemyFactory enemy;
-	static GameController juego;
+	private static Personaje personaje;
+	private static DataPrinter data;
+	private static int per;
+	private static String mundo;
+	private static EnemyController enemy;
+	@SuppressWarnings("unused")
+	private static TemplateAcciones accionesEnemigo;
+	@SuppressWarnings("unused")
+	private static Strategy estrategia;
+	private static Singleton calcular;
+	private static int esqui2 = 0;
+	private static int herido = 0;
 	
 	public static void main(String[] args) {		
 			
@@ -19,6 +28,7 @@ public class main_ivan_mario {
 		int n = data.PrintInfo();
 		personaje = new PersonajeBase(n);
 		per = n;
+		calcular = Singleton.getCalculadora();
 		
 		Prueba();
 				
@@ -27,9 +37,10 @@ public class main_ivan_mario {
 	public static void Prueba() {		
 		
 		Mundo();
+		espera(1000);
 		Enemigo();
+		espera(1000);
 		Eleccion();
-		
 	}
 
 	@SuppressWarnings({ "resource" })
@@ -38,8 +49,19 @@ public class main_ivan_mario {
 	    Scanner scanner = new Scanner(System.in);
 
 		int sel = 0;
+		int esqui = 0;
 		
 		do {
+			
+			if(esqui == 0) {calcular.setPerEsquiva(false);}
+			else {esqui--;}
+			if(esqui2 == 0) {calcular.setEneEsquiva(false);}
+			else {esqui2--;}
+			if(herido == 0 && personaje.getEstado() == "Herido") {personaje.setEstado("Activo");}
+			else {if(herido>0) {personaje.setEstado("Herido");herido--;espera(1000);}}
+			
+			calcular.setPersonaje(personaje);
+			calcular.setEnemy(enemy);
 			
 			System.out.println("\n¿Qué deseas hacer?");
 
@@ -52,14 +74,23 @@ public class main_ivan_mario {
 				switch(sel){
 					
 				case 1://ATACAR
+					calcular.Ataque(true);
+					calcular.setEneEsquiva(false);
+					eleccionEnemy();
 					break;
 				case 2://ESQUIVAR
+					calcular.setPerEsquiva(true);
+					esqui = 1;
+					eleccionEnemy();
 					break;
 				case 3://BEBER MAHOU
+					data.InfoMahou(personaje);
 					personaje.setEstado("Paralizado");
+					eleccionEnemy();
 					break;
 				case 4://VAPEAR
 					data.InfoSanadora(personaje);
+					eleccionEnemy();
 					break;
 				case 5://COGER OBJETO
 					
@@ -76,11 +107,11 @@ public class main_ivan_mario {
 						break;
 					
 					}
-									
+					eleccionEnemy();	
 					break;
 				case 6://STATS
 					data.Stats(personaje);
-					data.EnemyStats(juego);
+					data.EnemyStats(enemy);
 					break;
 					
 				}
@@ -96,16 +127,17 @@ public class main_ivan_mario {
 				case 4://VAPEAR
 					data.InfoSanadora(personaje);
 					personaje.setEstado("Activo");
+					eleccionEnemy();
 					break;			
 				case 6://STATS
 					data.Stats(personaje);
-					data.EnemyStats(juego);
+					data.EnemyStats(enemy);
 					break;
 					
 				}
 				
 			}
-
+						
 		}while(sel != 7);
 		
 		data.End();
@@ -116,21 +148,23 @@ public class main_ivan_mario {
 							
 		//abstract factory
 				
+		EnemyFactory loc = null;
+		
 		switch(mundo) {
 		
 		case "Calle":
-			enemy = new EnemigosCalle();
+			loc = new EnemigosCalle();
 			break;
 		case "Jungla":
-			enemy = new EnemigosJungla();
+			loc = new EnemigosJungla();
 			break;
 		case "Playa":
-			enemy = new EnemigosPlaya();
+			loc = new EnemigosPlaya();
 			break;
 		}
 				
-		juego = new GameController((int)(Math.random()*3),enemy);
-		juego.Info();
+		enemy = new EnemyController((int)(Math.random()*3),loc);
+		enemy.Info();
 			
 	}
 	
@@ -142,6 +176,8 @@ public class main_ivan_mario {
 		mundo = munrand[rand];
 					
 		data.InfoMundo(rand);
+		
+		espera(1000);
 		
 		if(mundo == personaje.getMundo()) {
 			
@@ -162,6 +198,77 @@ public class main_ivan_mario {
 			
 		}
 			
+	}
+	
+	private static void eleccionEnemy() {
+		
+		espera(1000);
+		
+		enemy.setAccion();
+		enemy.getAccion().Actuar();
+		
+		if(enemy.getAccion().Info() == 1) {
+			
+			int a = calcular.Ataque(false);
+			calcular.setPerEsquiva(false);
+			if(a==1) {
+				
+				System.out.printf(
+						 "╠══════════════════════════════════╣\n"
+					   + "║         « Tipo de ataque »       ║\n"
+					   + "║                                  ║\n"
+					   + "║   El ataque enmigo era de tipo:  ║\n");
+				switch(enemy.getEstrategia().tipo()) {
+				
+				case "Paralizado":
+					System.out.printf(
+						     "║            « Helado »            ║\n"
+						   + "║                                  ║\n"
+						   + "║       Este ataque te paraliza    ║\n"
+						   + "╚══════════════════════════════════╝\n");
+					personaje.setEstado(enemy.getEstrategia().tipo());
+					break;
+				case "Herido":
+					System.out.printf(
+						     "║           « Veneno »             ║\n"
+						   + "║                                  ║\n"
+						   + "║    Este ataque te deja herido    ║\n"
+						   + "║        Recibes 5 de danio        ║\n"
+						   + "║         Durante 2 turnos         ║\n"
+						   + "╚══════════════════════════════════╝\n");
+					herido = 2;
+					break;
+				case "Activo":
+					System.out.printf(
+						     "║            « Normal »            ║\n"
+						   + "║                                  ║\n"
+						   + "║   Este ataque no tiene efectos   ║\n"
+						   + "╚══════════════════════════════════╝\n");
+					break;
+				
+				}
+				
+			}
+			
+		}else {
+			calcular.setEneEsquiva(true);
+			esqui2 = 1;
+		}
+		
+		espera(1000);
+		
+	}
+	
+	public static void espera(int n) {
+		
+		try {
+			Thread.sleep(n);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 }

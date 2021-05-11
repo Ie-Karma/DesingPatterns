@@ -14,5 +14,5 @@ public interface Guiri {
 	//en el segundo parametro (int pos) definimos si queremos cambiar/ver la vida, ataque o destreza (0,1,2 respectivamente)
 	//el ultimo parameto sera el valor por el que cambiemos el parametro anterior
 	int Stats(boolean cha, int pos, int val);
-
+	
 }

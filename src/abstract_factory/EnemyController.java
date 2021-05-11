@@ -1,15 +1,21 @@
 package abstract_factory;
 
-public class GameController {
+import strategy.*;
+import template_method.*;
+
+public class EnemyController {
 	
 	//creamos los distintos tipos de enemigos de forma general
-	EnemyFactory enemy;
+	@SuppressWarnings("unused")
+	private EnemyFactory enemy;
+	private Strategy estrategia;
+	private TemplateAcciones accion;
 	private MDLR mdlr;
 	private Frank frank;
 	private Guiri guiri;
 	private int num;
 	
-	public GameController(int n,EnemyFactory e) {
+	public EnemyController(int n,EnemyFactory e) {
 		
 		//recibimos un EnemyFactory en el que se especifica la localizacion
 		//dada esa Factoria podemos crear el enemigo solicitado mediante int n
@@ -71,6 +77,55 @@ public class GameController {
 		}
 
 		return ret;
+	}
+
+	private void setEstrategia() {
+		
+		switch((int)(Math.random()*3)) {
+		
+		case 0:
+			estrategia = new Normal();
+			break;
+		case 1:
+			estrategia = new Hielo();
+			break;
+		case 2:
+			estrategia = new Veneno();
+			break;
+		
+		}
+		
+	}
+	
+	public void recibir(int n) {
+		
+		Stats(true,0,Stats(false,0,0)-n);
+		
+	}
+	
+	public Strategy getEstrategia() {
+		return estrategia;
+	}
+	
+	public TemplateAcciones getAccion() {
+		return accion;
+	}
+
+	public void setAccion() {
+		
+		switch((int)(Math.random()*2)) {
+		
+		case 0:
+			accion = new AccionAtacar();
+			setEstrategia();
+			break;
+		case 1:
+			accion = new AccionEsquivar();
+			estrategia = new Normal();
+			break;
+		
+		}
+		
 	}
 	
 }

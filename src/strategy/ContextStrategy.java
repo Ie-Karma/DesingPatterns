@@ -8,6 +8,6 @@ public class ContextStrategy {
 	}
 	
 	public String estrategia() {
-		return estrategia.estrategia();
+		return estrategia.tipo();
 	}
 }

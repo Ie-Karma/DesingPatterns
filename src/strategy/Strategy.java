@@ -1,5 +1,7 @@
 package strategy;
 
 public interface Strategy {
-	String estrategia();
+	
+	String tipo();
+	int ataque();
 }

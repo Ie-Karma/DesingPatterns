@@ -1,7 +1,8 @@
 package controlador;
 
 import java.util.Scanner;
-import abstract_factory.GameController;
+
+import abstract_factory.EnemyController;
 import decorator.*;
 
 public class DataPrinter {
@@ -261,7 +262,7 @@ System.out.println
 				);
 	}
 
-	public void EnemyStats(GameController e) {
+	public void EnemyStats(EnemyController e) {
 		
 		System.out.printf(
 				 "╔══════════════════════════════════╗\n"
@@ -401,6 +402,27 @@ System.out.println
 + "╚══════════════════════════════════╝\n"
 );
 
+		
+	}
+	
+	public void InfoMahou(Personaje a) {
+		
+		int n;
+		
+		n = a.getVida();
+		System.out.printf(
+					 "╔══════════════════════════════════╗\n"
+				   + "║            « SANADO »            ║\n"
+				   + "║                                  ║\n"
+				   + "║  Con esta accion te has sanado   ║\n"
+				   + "║          +20 pts de vida         ║\n"
+				   + "║   Pero te has quedado borracho   ║\n"
+				   + "║         VIDA <%03d + 10>          ║\n"
+				   + "║        ESTADO: Paralizado        ║\n"
+				   + "╚══════════════════════════════════╝\n"
+				,n);
+		
+		a.setStats(0, n+20);
 		
 	}
 	

@@ -13,13 +13,16 @@ public class PersonajeHerido extends EstadoPersonaje {
 	
 	public void setEstadoHerido() {
 		
-		int tmp;
+		personaje.recibir(5);
 		
-		tmp = personaje.getAtaque()-5;
-		personaje.setStats(1, tmp);
+		System.out.print
+		("╔══════════════════════════════════╗\n"
+	   + "║            « Veneno »            ║\n"
+	   + "║                                  ║\n"
+	   + "║    El veneno te hizo 5 puntos    ║\n"
+	   + "║             de danio             ║\n"
+	   + "╚══════════════════════════════════╝\n");
 		
-		tmp = personaje.getDestreza()-5; 
-		personaje.setStats(2, tmp);	
 	}
 	
 	public void setEstadoParalizado() {
