@@ -475,13 +475,37 @@ System.out.println
 		
 	}
 	
-	public void End() {
+	private void End() {
 		
 		System.out.print
 		("╔══════════════════════════════════╗\n"
 	   + "║           « THE END »            ║\n"
 	   + "╚══════════════════════════════════╝\n");
 		
+		System.exit(0);
+		
 	}
 	
+	public void EnemigoEliminado() {
+		System.out.print
+		("╔══════════════════════════════════╗\n"
+	   + "║          « A KNOCKOUT »          ║\n"
+	   + "║                                  ║\n"
+	   + "║       Eliminaste al enemigo      ║\n"
+	   + "║            ¡Bien hecho!          ║\n"
+	   + "║   Pasando a la siguiente ronda   ║\n"
+	   + "╚══════════════════════════════════╝\n");
+	}
+
+	public void PersonajeEliminado() {
+		
+		System.out.print
+		("╔══════════════════════════════════╗\n"
+	   + "║          « YOU DIED! »           ║\n"
+	   + "║                                  ║\n"
+	   + "║   Te has quedado sin vida crack  ║\n"
+	   + "╚══════════════════════════════════╝\n");
+		
+		End();
+	}
 }
