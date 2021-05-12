@@ -19,295 +19,184 @@ public class main_ivan_mario {
 	@SuppressWarnings("unused")
 	private static Strategy estrategia;
 	private static Singleton calcular;
+	private static int esqui = 0;
 	private static int esqui2 = 0;
 	private static int herido = 0;
-	private static boolean turn = true;
 	private static int NMundo = 0;
-	private static int NRonda = 0;
 	
 	public static void main(String[] args) {		
 			
 		data = new DataPrinter();
-		int n = data.PrintInfo();
+		int n = data.printInfo();
 		personaje = new PersonajeBase(n);
 		per = n;
 		calcular = Singleton.getCalculadora();
 		
 		while(personaje.getVida() > 0) {
-			Partida();
+			partida();
 		}
 		
 	}
 
-	public static void Partida() {		
+	public static void partida() {		
 		
 		NMundo++;
-		data.Nmundo(NMundo);
-		Mundo();
-		Enemigo();
+		data.nMundo(NMundo);
+		mundo();
+		enemigo();
 		data.espera(1000);
+				
+		turno(data.monedaAzar());
 		
-		NRonda = 1;
+	}
+
+	private static void compro(int esqui) {
 		
-		switch(data.MonedaAzar()) {
+		if(esqui == 0) {calcular.setPerEsquiva(false);}
+		else {esqui--;}
+		if(esqui2 == 0) {calcular.setEneEsquiva(false);}
+		else {esqui2--;}
+		if(herido == 0 && personaje.getEstado() == "Herido") {personaje.setEstado("Activo");}
+		else {if(herido>0) {personaje.setEstado("Herido");herido--;data.espera(1000);}}
 		
-		case 1:		data.espera(1000);
-					AccionesPer();
-					break;
-					
-		case 0:		data.espera(1000);
-					AccionesEne();
-					break;
+	}
 		
+	private static void cogerObjeto() {
+		
+		switch (data.objetos()) {
+		
+		case 0:
+			personaje = new PersonajeCoraza(personaje);
+			turno(0);
+			break;
+		case 1:
+			personaje = new PersonajeGafas(personaje);
+			turno(0);
+			break;
+		case 2:
+			personaje = new PersonajeMartillo(personaje);
+			turno(0);
+			break;
+		case 3:
+			turno(1);
+			break;
 		}
 		
 	}
+	
+	private static void turno(int n) {
+		
+		if(n == 1) {
+			accionesPer();
+		}else {
+			eleccionEnemy();
+		}
+		
+	}
+	
+	private static void switchAcciones(int sel){
+		
+		switch(sel){
+		
+		case 1://ATACAR
+			calcular.ataque(true);
+			calcular.setEneEsquiva(false);
+			if( enemy.stats(false, 0, 0) <= 0) {break;}
+			turno(0);
+			break;
+			
+		case 2://ESQUIVAR
+			calcular.setPerEsquiva(true);
+			esqui = 1;
+			turno(0);
+			break;
+			
+		case 3://BEBER MAHOU
+			data.infoMahou(personaje);
+			personaje.setEstado("Paralizado");
+			turno(0);
+			break;
+			
+		case 4://VAPEAR
+			data.infoSanadora(personaje);
+			turno(0);
+			break;
+			
+		case 5://COGER OBJETO
+			cogerObjeto();
+			turno(0);
+			break;
+			
+		case 6://STATS
+			data.stats(personaje);
+			data.enemyStats(enemy);
+			turno(1);
+			break;
+			
+		case 7:
+				data.end();
+				break;
+		}
 
+	}
+	
+	private static void switchAccionesPara(int sel) {
+		
+		switch(sel){
+		
+		case 4://VAPEAR
+			data.infoSanadora(personaje);
+			personaje.setEstado("Activo");
+			turno(0);
+			break;			
+		case 6://STATS
+			data.stats(personaje);
+			data.enemyStats(enemy);
+			turno(1);
+			break;
+			
+		case 7:
+			data.end();
+			break;
+		}
+		
+	}
+	
 	@SuppressWarnings({ "resource" })
-	private static void AccionesEne(){
+	private static void accionesPer(){
 		
 	    Scanner scanner = new Scanner(System.in);
-
-		int sel = 0;
-		int esqui = 0;
+		esqui = 0;
 		
 			do {
 				
-				if(esqui == 0) {calcular.setPerEsquiva(false);}
-				else {esqui--;}
-				if(esqui2 == 0) {calcular.setEneEsquiva(false);}
-				else {esqui2--;}
-				if(herido == 0 && personaje.getEstado() == "Herido") {personaje.setEstado("Activo");}
-				else {if(herido>0) {personaje.setEstado("Herido");herido--;data.espera(1000);}}
-				
+				compro(esqui);
 				calcular.setPersonaje(personaje);
 				calcular.setEnemy(enemy);
 								
-				if( enemy.Stats(false, 0, 0) <= 0) {break;}
+				if( enemy.stats(false, 0, 0) <= 0) {break;}
 				
-				if(turn) {
-					data.Nronda(NRonda);
-					NRonda++;
-					eleccionEnemy();
-					}
-				
-				System.out.println("\n¿Qué deseas hacer?");
-
 				if(personaje.getEstado() != "Paralizado") {
 					
-					data.Accion();
-					
-					sel = scanner.nextInt();
-					
-					switch(sel){
-						
-					case 1://ATACAR
-						calcular.Ataque(true);
-						calcular.setEneEsquiva(false);
-						if( enemy.Stats(false, 0, 0) <= 0) {break;}
-						turn = true;
-						break;
-					case 2://ESQUIVAR
-						calcular.setPerEsquiva(true);
-						esqui = 1;
-						turn = true;
-						break;
-					case 3://BEBER MAHOU
-						data.InfoMahou(personaje);
-						personaje.setEstado("Paralizado");
-						turn = true;
-						break;
-					case 4://VAPEAR
-						data.InfoSanadora(personaje);
-						turn = true;
-						break;
-					case 5://COGER OBJETO
-						
-						switch (data.Objetos()) {
-						
-						case 0:
-							personaje = new PersonajeCoraza(personaje);
-							turn = true;
-							break;
-						case 1:
-							personaje = new PersonajeGafas(personaje);
-							turn = true;
-							break;
-						case 2:
-							personaje = new PersonajeMartillo(personaje);
-							turn = true;
-							break;
-						case 3:
-							turn = false;
-							break;
-
-						}
-						break;
-					case 6://STATS
-						data.Stats(personaje);
-						data.EnemyStats(enemy);
-						turn = false;
-						break;
-						
-					case 7: 
-							data.End();
-							break;
-						
-					}
+					data.accion();
+					switchAcciones(scanner.nextInt());
 					
 				}else {
 					
-					data.AccionParalizado();
-					
-					sel = scanner.nextInt();
-					
-					switch(sel){
-					
-					case 4://VAPEAR
-						data.InfoSanadora(personaje);
-						personaje.setEstado("Activo");
-						turn = true;
-						break;			
-					case 6://STATS
-						data.Stats(personaje);
-						data.EnemyStats(enemy);
-						turn = false;
-						break;
-						
-					case 7: 
-							data.End();
-							break;
-						
-					}
+					data.accionParalizado();
+					switchAccionesPara(scanner.nextInt());
 					
 				}
 							
-			}while(sel != 7 );
+			}while(personaje.getVida() > 0);
 			
 			data.espera(1000);
-			data.EnemigoEliminado();
+			data.enemigoEliminado();
 			data.espera(1000);
 				
 	}
 	
-	@SuppressWarnings({ "resource" })
-	private static void AccionesPer(){
-		
-	    Scanner scanner = new Scanner(System.in);
-
-		int sel = 0;
-		int esqui = 0;
-		
-			do {
-				
-				if(esqui == 0) {calcular.setPerEsquiva(false);}
-				else {esqui--;}
-				if(esqui2 == 0) {calcular.setEneEsquiva(false);}
-				else {esqui2--;}
-				if(herido == 0 && personaje.getEstado() == "Herido") {personaje.setEstado("Activo");}
-				else {if(herido>0) {personaje.setEstado("Herido");herido--;data.espera(1000);}}
-				
-				calcular.setPersonaje(personaje);
-				calcular.setEnemy(enemy);
-								
-				if( enemy.Stats(false, 0, 0) <= 0) {break;}
-				
-				data.Nronda(NRonda);
-				NRonda++;
-				
-				System.out.println("\n¿Qué deseas hacer?");
-
-				if(personaje.getEstado() != "Paralizado") {
-					
-					data.Accion();
-					
-					sel = scanner.nextInt();
-					
-					switch(sel){
-						
-					case 1://ATACAR
-						calcular.Ataque(true);
-						calcular.setEneEsquiva(false);
-						if( enemy.Stats(false, 0, 0) <= 0) {break;}
-						eleccionEnemy();
-						break;
-					case 2://ESQUIVAR
-						calcular.setPerEsquiva(true);
-						esqui = 1;
-						eleccionEnemy();
-						break;
-					case 3://BEBER MAHOU
-						data.InfoMahou(personaje);
-						personaje.setEstado("Paralizado");
-						eleccionEnemy();
-						break;
-					case 4://VAPEAR
-						data.InfoSanadora(personaje);
-						eleccionEnemy();
-						break;
-					case 5://COGER OBJETO
-						
-						switch (data.Objetos()) {
-						
-						case 0:
-							personaje = new PersonajeCoraza(personaje);
-							break;
-						case 1:
-							personaje = new PersonajeGafas(personaje);
-							break;
-						case 2:
-							personaje = new PersonajeMartillo(personaje);
-							break;
-						
-						}
-						eleccionEnemy();	
-						break;
-					case 6://STATS
-						data.Stats(personaje);
-						data.EnemyStats(enemy);
-						break;
-						
-					case 7:
-							data.End();
-							break;
-						
-					}
-					
-				}else {
-					
-					data.AccionParalizado();
-					
-					sel = scanner.nextInt();
-					
-					switch(sel){
-					
-					case 4://VAPEAR
-						data.InfoSanadora(personaje);
-						personaje.setEstado("Activo");
-						eleccionEnemy();
-						break;			
-					case 6://STATS
-						data.Stats(personaje);
-						data.EnemyStats(enemy);
-						break;
-						
-					case 7:
-							data.End();
-							break;
-						
-					}
-					
-				}
-							
-			}while(sel != 7 );
-			
-			data.espera(1000);
-			data.EnemigoEliminado();
-			data.espera(1000);
-				
-	}
-	
-	private static void Enemigo() {
+	private static void enemigo() {
 							
 		//abstract factory
 				
@@ -327,24 +216,24 @@ public class main_ivan_mario {
 		}
 				
 		enemy = new EnemyController((int)(Math.random()*3),loc);
-		enemy.Info();
+		enemy.info();
 			
 	}
 	
-	private static void Mundo() {
+	private static void mundo() {
 		
 		String munrand[] = {"Calle","Jungla","Playa"};
 		
 		int rand = (int)(Math.random()*3);
 		mundo = munrand[rand];
 					
-		data.InfoMundo(rand);
+		data.infoMundo(rand);
 		
 		data.espera(1000);
 		
 		if(mundo == personaje.getMundo()) {
 			
-			data.VentajaMundo();
+			data.ventajaMundo();
 			
 			switch(per) {
 			
@@ -370,10 +259,10 @@ public class main_ivan_mario {
 		enemy.setAccion();
 		enemy.getAccion().Actuar();
 		
-		if(enemy.getAccion().Info() == 1) {
+		if(enemy.getAccion().info() == 1) {
 			
-			int a = calcular.Ataque(false);
-			if(personaje.getVida() <= 0) {data.espera(1000);data.PersonajeEliminado();}
+			int a = calcular.ataque(false);
+			if(personaje.getVida() <= 0) {data.espera(1000);data.personajeEliminado();}
 			calcular.setPerEsquiva(false);
 			if(a==1) {
 				
@@ -421,6 +310,7 @@ public class main_ivan_mario {
 		}
 		
 		data.espera(1000);
+		turno(1);
 		
 	}
 	

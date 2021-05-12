@@ -7,7 +7,7 @@ public class PersonajeParalizado extends EstadoPersonaje{
 	public PersonajeParalizado(PersonajeBase personaje) {
 		super(personaje);
 		DataPrinter data = new DataPrinter();
-		data.InfoParalizado();
+		data.infoParalizado();
 	}
 	
 	public void setEstadoActivo() {

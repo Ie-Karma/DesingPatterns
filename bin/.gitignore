@@ -1,2 +1,6 @@
 /controlador/
 /template_method/
+/state/
+/abstract_factory/
+/singleton/
+/enemys/

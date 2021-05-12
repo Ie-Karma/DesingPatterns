@@ -4,16 +4,16 @@ public abstract class TemplateAcciones {
 	
 	public final void Actuar() {
 		
-		InicioTurno();
+		inicioTurno();
 		espera(1000);
-		Esquivar();
-		Atacar();
+		esquivar();
+		atacar();
 		
 	}
 
-	public abstract void Esquivar();
-	public abstract void Atacar();
-	public abstract int Info();
+	public abstract void esquivar();
+	public abstract void atacar();
+	public abstract int info();
 	
 	private final void espera(int n) {
 		try {
@@ -24,7 +24,7 @@ public abstract class TemplateAcciones {
 		}
 	}
 	
-	private final void InicioTurno() {
+	private final void inicioTurno() {
 		
 		System.out.printf(
 				 "╔══════════════════════════════════╗\n"

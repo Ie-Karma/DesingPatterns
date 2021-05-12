@@ -5,7 +5,7 @@ public interface MDLR {
 	//Print simple para denotar la entrada del Enemigo al juego
 	//Muestra su Stats: vida, ataque y destreza, a parte de una linea del personaje
 	//y te informa de sus ventajas o desventajas frente al terreno en el que luchais
-	void Info();
+	void info();
 	
 	//Metodo multi-funcional
 	//Usamos este metodo en todos los enemigos con diversas funciones
@@ -13,6 +13,6 @@ public interface MDLR {
 	//en el primer parametro (bool cha) definimos true = set, false = get
 	//en el segundo parametro (int pos) definimos si queremos cambiar/ver la vida, ataque o destreza (0,1,2 respectivamente)
 	//el ultimo parameto sera el valor por el que cambiemos el parametro anterior
-	int Stats(boolean cha, int pos, int val);
+	int stats(boolean cha, int pos, int val);
 
 }

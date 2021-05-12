@@ -42,13 +42,13 @@ public final class Singleton {
 		this.enemy = enemy;
 	}
 	
-	public int Ataque(boolean prin) {
+	public int ataque(boolean prin) {
 		
 		int sat = 0;
 		
 		if(prin) {
 			
-			if((enemy.Stats(false, 2, 0)<=(Math.random()*10)) && eneEsquiva) {
+			if((enemy.stats(false, 2, 0)<=(Math.random()*10)) && eneEsquiva) {
 				
 				System.out.printf(
 						 "╔══════════════════════════════════╗\n"
@@ -90,7 +90,7 @@ public final class Singleton {
 				
 			}else {
 				
-				personaje.recibir(enemy.Stats(false, 1, 0));
+				personaje.recibir(enemy.stats(false, 1, 0));
 				sat = 1;
 				
 				System.out.printf(
@@ -100,7 +100,7 @@ public final class Singleton {
 					   + "║    No has logrado esquivarlo     ║\n"
 					   + "║  el enemigo te hace %02d de danio  ║\n"
 					   + "╠══════════════════════════════════╣\n"
-					,enemy.Stats(false, 1, 0));
+					,enemy.stats(false, 1, 0));
 				
 			}
 			

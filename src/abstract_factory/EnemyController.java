@@ -38,26 +38,26 @@ public class EnemyController {
 			
 	}
 	
-	public void Info() {
+	public void info() {
 		
 		//extension del metodo Info() de los enemigos
 		
 		switch(num) {
 
 		case 0:
-			mdlr.Info();
+			mdlr.info();
 			break;
 		case 1:
-			frank.Info();
+			frank.info();
 			break;
 		case 2:
-			guiri.Info();
+			guiri.info();
 			break;
 		}
 		
 	}
 	
-	public int Stats(boolean cha, int p, int v) {
+	public int stats(boolean cha, int p, int v) {
 		
 		//extension del metodo Stats() de los enemigos
 		
@@ -66,13 +66,13 @@ public class EnemyController {
 		switch(num) {
 
 		case 0:
-			ret = mdlr.Stats(cha, p, v);
+			ret = mdlr.stats(cha, p, v);
 			break;
 		case 1:
-			ret = frank.Stats(cha, p, v);
+			ret = frank.stats(cha, p, v);
 			break;
 		case 2:
-			ret = guiri.Stats(cha, p, v);
+			ret = guiri.stats(cha, p, v);
 			break;
 		}
 
@@ -99,7 +99,7 @@ public class EnemyController {
 	
 	public void recibir(int n) {
 		
-		Stats(true,0,Stats(false,0,0)-n);
+		stats(true,0,stats(false,0,0)-n);
 		
 	}
 	

@@ -3,7 +3,7 @@ package template_method;
 public class AccionEsquivar extends TemplateAcciones{
 
 	@Override
-	public void Esquivar() {
+	public void esquivar() {
 		System.out.printf(
 				 "╔══════════════════════════════════╗\n"
 			   + "║     « El enemigo se prepara »    ║\n"
@@ -15,11 +15,11 @@ public class AccionEsquivar extends TemplateAcciones{
 		}
 
 	@Override
-	public void Atacar() {
+	public void atacar() {
 	}
 
 	@Override
-	public int Info() {
+	public int info() {
 		return 0;
 	}
 

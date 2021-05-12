@@ -17,7 +17,7 @@ public class MDLRCalle implements MDLR{
 	}
 
 	@Override
-	public void Info() {
+	public void info() {
 		
 		System.out.printf
 		("╔══════════════════════════════════╗\n"
@@ -39,7 +39,7 @@ public class MDLRCalle implements MDLR{
 	}
 	
 	@Override
-	public int Stats(boolean cha, int p, int v) {
+	public int stats(boolean cha, int p, int v) {
 		
 		int ret = 0;
 		

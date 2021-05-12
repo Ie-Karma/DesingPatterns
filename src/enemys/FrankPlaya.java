@@ -17,7 +17,7 @@ public class FrankPlaya implements Frank{
 	}
 	
 	@Override
-	public void Info() {
+	public void info() {
 		
 		System.out.printf
 		("╔══════════════════════════════════╗\n"
@@ -38,7 +38,7 @@ public class FrankPlaya implements Frank{
 	}
 	
 	@Override
-	public int Stats(boolean cha, int p, int v) {
+	public int stats(boolean cha, int p, int v) {
 		
 		int ret = 0;
 		

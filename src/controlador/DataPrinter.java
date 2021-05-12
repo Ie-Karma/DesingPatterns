@@ -12,7 +12,7 @@ public class DataPrinter {
 	boolean gafas = false;
 	boolean martillo = false;
 	
-	public int PrintInfo() {
+	public int printInfo() {
 
 	    @SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
@@ -71,7 +71,7 @@ public class DataPrinter {
 		
 	}
 
-	public void VentajaMundo() {
+	public void ventajaMundo() {
 		
 		System.out.print
 		("╔══════════════════════════════════╗\n"
@@ -107,7 +107,7 @@ public class DataPrinter {
 		
 	}
 	
-	public void InfoMundo(int n) {
+	public void infoMundo(int n) {
 		
 		System.out.print
 		("╔══════════════════════════════════╗\n"
@@ -170,7 +170,7 @@ public class DataPrinter {
 		
 	}
 	
-	public void Accion() {
+	public void accion() {
 			
 			System.out.print
 			("╔══════════════════════════════════╗\n"
@@ -216,7 +216,7 @@ System.out.println
 			
 }
 
-	public void Stats(Personaje a) {
+	public void stats(Personaje a) {
 		
 		int n;
 		
@@ -262,17 +262,17 @@ System.out.println
 				);
 	}
 
-	public void EnemyStats(EnemyController e) {
+	public void enemyStats(EnemyController e) {
 		
 		System.out.printf(
 				 "╔══════════════════════════════════╗\n"
 			   + "║         « ENEMY STATS »          ║\n"
 			   + "║                                  ║\n"
 			   + "╠ VIDA <%03d>                       ║\n"
-			   + "║ ",e.Stats(false, 0, 0));
+			   + "║ ",e.stats(false, 0, 0));
 		for(int i = 0; i<32;i++) {
 			
-			if(i<(e.Stats(false, 0, 0)/10)) {System.out.print("*");}
+			if(i<(e.stats(false, 0, 0)/10)) {System.out.print("*");}
 			else {System.out.print(" ");}
 			
 		}
@@ -282,11 +282,11 @@ System.out.println
 		       + "╠ DESTREZA <%02d>                    ║\n"
 			   + "║                                  ║\n"
 			   + "╚══════════════════════════════════╝\n"
-			,e.Stats(false, 1, 0),e.Stats(false, 2, 0));
+			,e.stats(false, 1, 0),e.stats(false, 2, 0));
 		
 	}
 	
-	public int Objetos() {
+	public int objetos() {
 		
 	    @SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
@@ -357,7 +357,7 @@ System.out.println
 		
 	}
 	
-	public void AccionParalizado() {
+	public void accionParalizado() {
 		
 		
 		System.out.print
@@ -405,7 +405,7 @@ System.out.println
 		
 	}
 	
-	public void InfoMahou(Personaje a) {
+	public void infoMahou(Personaje a) {
 		
 		int n;
 		
@@ -426,7 +426,7 @@ System.out.println
 		
 	}
 	
-	public void InfoSanadora(Personaje a) {
+	public void infoSanadora(Personaje a) {
 		
 		if(a.getEstado() != "Paralizado") {
 			
@@ -460,7 +460,7 @@ System.out.println
 		
 	}
 
-	public void InfoParalizado() {
+	public void infoParalizado() {
 		
 		System.out.print(
 				 "╔══════════════════════════════════╗\n"
@@ -475,7 +475,7 @@ System.out.println
 		
 	}
 	
-	public void End() {
+	public void end() {
 		
 		System.out.print
 		("╔══════════════════════════════════╗\n"
@@ -486,7 +486,7 @@ System.out.println
 		
 	}
 	
-	public void EnemigoEliminado() {
+	public void enemigoEliminado() {
 		System.out.print
 		("╔══════════════════════════════════╗\n"
 	   + "║          « A KNOCKOUT »          ║\n"
@@ -497,7 +497,7 @@ System.out.println
 	   + "╚══════════════════════════════════╝\n");
 	}
 
-	public void PersonajeEliminado() {
+	public void personajeEliminado() {
 		
 		System.out.print
 		("╔══════════════════════════════════╗\n"
@@ -506,10 +506,10 @@ System.out.println
 	   + "║   Te has quedado sin vida crack  ║\n"
 	   + "╚══════════════════════════════════╝\n");
 		
-		End();
+		end();
 	}
 
-	public int MonedaAzar() {
+	public int monedaAzar() {
 		
 	    @SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
@@ -633,7 +633,7 @@ System.out.println
 		
 	}
 	
-	public void Nmundo(int n) {
+	public void nMundo(int n) {
 		
 		System.out.printf(
 				 "╔══════════════════════════════════╗\n"
@@ -643,16 +643,6 @@ System.out.println
 		espera(1000);
 		
 	}
-	
-	public void Nronda(int n) {
-		
-		System.out.printf(
-				 "╔══════════════════════════════════╗\n"
-			   + "║          « Ronda N%02d »           ║\n"	
-			   + "╚══════════════════════════════════╝\n",n
-			);
-		espera(1000);
 
-	}
 	
 }
