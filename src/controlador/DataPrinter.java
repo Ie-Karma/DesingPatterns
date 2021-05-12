@@ -475,7 +475,7 @@ System.out.println
 		
 	}
 	
-	private void End() {
+	public void End() {
 		
 		System.out.print
 		("╔══════════════════════════════════╗\n"
@@ -508,4 +508,151 @@ System.out.println
 		
 		End();
 	}
+
+	public int MonedaAzar() {
+		
+	    @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.printf(
+				 "╔══════════════════════════════════╗\n"
+			   + "║        « ¿Quien empieza? »       ║\n"
+			   + "║                                  ║\n"
+			   + "║    Se lanza una moneda al aire   ║\n"
+			   + "║           ¿Que escoges?          ║\n"
+			   + "║                                  ║\n"
+			   + "║             <1> Cara             ║\n"
+			   + "║             <2> Cruz             ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			);
+		
+		int cha = scanner.nextInt();
+
+		switch(cha) {
+		
+		case 1:
+			System.out.printf(
+					 "╔══════════════════════════════════╗\n"
+				   + "║           Escoges Cara           ║\n"
+				);
+			break;
+			
+		case 2:
+			System.out.printf(
+					 "╔══════════════════════════════════╗\n"
+				   + "║           Escoges Cruz           ║\n"
+				);
+			break;
+		}
+
+		int random = (int)(Math.random()*2 + 1);
+		
+		for(int i = 0; i<3; i++) {
+			
+			System.out.printf(
+					 "╠══════════════════════════════════╣\n"
+				   + "║               Cara               ║\n"		 
+				);
+			espera(300);
+			System.out.printf(
+					 "╠══════════════════════════════════╣\n"
+				   + "║               Cruz               ║\n"		 
+				);
+			espera(300);
+
+		}
+
+		switch(random) {
+		
+		case 1:
+			System.out.printf(
+					 "╠══════════════════════════════════╣\n"
+				   + "║             « Cara »             ║\n"	
+				   + "╚══════════════════════════════════╝\n"
+
+				);
+			break;
+			
+		case 2:
+			System.out.printf(
+					 "╠══════════════════════════════════╣\n"
+				   + "║               Cara               ║\n"		 
+				);
+			espera(300);
+			System.out.printf(
+					 "╠══════════════════════════════════╣\n"
+				   + "║             « Cruz »             ║\n"	
+				   + "╚══════════════════════════════════╝\n"
+				);
+			break;
+		
+		}
+		
+		espera(100);
+
+		
+		if(random == cha) {
+			
+			System.out.printf(
+					 "╔══════════════════════════════════╗\n"
+				   + "║           « Acertaste »          ║\n"	
+				   + "║                                  ║\n"
+				   + "║            Empiezas tu           ║\n"
+				   + "╚══════════════════════════════════╝\n"
+				);
+			
+			cha = 1;
+			
+		}else {
+			
+			System.out.printf(
+					 "╔══════════════════════════════════╗\n"
+				   + "║           « Fallaste »           ║\n"	
+				   + "║                                  ║\n"
+				   + "║        Empieza el enemigo        ║\n"
+				   + "╚══════════════════════════════════╝\n"
+				);
+			
+			cha = 0;
+			
+		}
+		
+		return cha;
+		
+	}
+
+	public void espera(int n) {
+		
+		try {
+			Thread.sleep(n);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public void Nmundo(int n) {
+		
+		System.out.printf(
+				 "╔══════════════════════════════════╗\n"
+			   + "║          « Mundo N%02d »           ║\n"	
+			   + "╚══════════════════════════════════╝\n",n
+			);
+		espera(1000);
+		
+	}
+	
+	public void Nronda(int n) {
+		
+		System.out.printf(
+				 "╔══════════════════════════════════╗\n"
+			   + "║          « Ronda N%02d »           ║\n"	
+			   + "╚══════════════════════════════════╝\n",n
+			);
+		espera(1000);
+
+	}
+	
 }

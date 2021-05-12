@@ -1,8 +1,2 @@
-/decorator/
-/state/
-/strategy/
 /controlador/
-/abstract_factory/
-/enemys/
 /template_method/
-/singleton/

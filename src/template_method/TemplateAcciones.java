@@ -8,7 +8,6 @@ public abstract class TemplateAcciones {
 		espera(1000);
 		Esquivar();
 		Atacar();
-		espera(1000);
 		
 	}
 
@@ -31,7 +30,7 @@ public abstract class TemplateAcciones {
 				 "╔══════════════════════════════════╗\n"
 			   + "║         « Turno enemigo »        ║\n"
 			   + "║                                  ║\n"
-			   + "║        \"Ahora me toca a mi\"      ║\n"
+			   + "║          \"Me toca a mi\"          ║\n"
 			   + "╚══════════════════════════════════╝\n"
 			);		
 	}

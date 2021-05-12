@@ -14,6 +14,14 @@ public class AccionAtacar extends TemplateAcciones{
 			   + "║    El enemigo prepara su ataque  ║\n"
 			   + "╚══════════════════════════════════╝\n"
 			);
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
