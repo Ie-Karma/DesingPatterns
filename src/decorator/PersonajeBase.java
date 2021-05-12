@@ -78,8 +78,15 @@ public class PersonajeBase implements Personaje{
 		//y en el segundo int val definimos el nuevo valor
 		switch (n){
 			case 0:  vida = val;
+					statsOrslok[0] = vida;
+					statsDario[0] = vida;
+					statsCheeto[0] = vida;
+
 			break;
 			case 1:  ataque = val;
+			statsOrslok[1] = ataque;
+			statsDario[1] = ataque;
+			statsCheeto[1] = ataque;
 			break;
 			case 2:
 				destreza = val;
@@ -89,6 +96,9 @@ public class PersonajeBase implements Personaje{
 				if(destreza < 0) {
 					destreza = 0;
 				}
+				statsOrslok[2] = destreza;
+				statsDario[2] = destreza;
+				statsCheeto[2] = destreza;
 			break;
 		}		
 		
@@ -131,18 +141,9 @@ public class PersonajeBase implements Personaje{
 		//para que cuando cambie de estados no vuelva a resetearse
 		vida -= n;
 		
-		switch (num) {
-		
-		case 0:
-			statsOrslok[0] = vida;
-			break;
-		case 1:
-			statsDario[0] = vida;
-			break;
-		case 2:
-			statsCheeto[0] = vida;
-			break;
-		}
+		statsOrslok[0] = vida;
+		statsDario[0] = vida;
+		statsCheeto[0] = vida;
 		
 		return vida;
 	}

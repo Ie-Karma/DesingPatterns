@@ -40,6 +40,7 @@ public class main_ivan_mario {
 
 	public static void partida() {		
 		
+		personaje.setEstado("Activo");
 		NMundo++;
 		data.nMundo(NMundo);
 		mundo();
@@ -188,11 +189,12 @@ public class main_ivan_mario {
 					
 				}
 							
-			}while(personaje.getVida() > 0);
+			}while(enemy.stats(false, 0, 0)>0);
 			
 			data.espera(1000);
 			data.enemigoEliminado();
 			data.espera(1000);
+			partida();
 				
 	}
 	
