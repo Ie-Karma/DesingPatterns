@@ -644,5 +644,38 @@ System.out.println
 		
 	}
 
+	public void tipoAtaque() {
+		System.out.printf(
+				 "╠══════════════════════════════════╣\n"
+			   + "║         « Tipo de ataque »       ║\n"
+			   + "║                                  ║\n"
+			   + "║   El ataque enmigo era de tipo:  ║\n");
+	}
+	
+	public void ataqueHelado() {
+		System.out.printf(
+			     "║            « Helado »            ║\n"
+			   + "║                                  ║\n"
+			   + "║       Este ataque te paraliza    ║\n"
+			   + "╚══════════════════════════════════╝\n");
+	}
+	
+	public void ataqueVeneno() {
+		System.out.printf(
+			     "║           « Veneno »             ║\n"
+			   + "║                                  ║\n"
+			   + "║    Este ataque te deja herido    ║\n"
+			   + "║        Recibes 5 de danio        ║\n"
+			   + "║         Durante 2 turnos         ║\n"
+			   + "╚══════════════════════════════════╝\n");
+	}
+	
+	public void ataqueNormal() {
+		System.out.printf(
+			     "║            « Normal »            ║\n"
+			   + "║                                  ║\n"
+			   + "║   Este ataque no tiene efectos   ║\n"
+			   + "╚══════════════════════════════════╝\n");
+	}
 	
 }

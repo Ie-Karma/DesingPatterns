@@ -43,7 +43,7 @@ public class main_ivan_mario {
 		personaje.setEstado("Activo");
 		NMundo++;
 		data.nMundo(NMundo);
-		mundo();
+		setMundo();
 		enemigo();
 		data.espera(1000);
 				
@@ -83,6 +83,8 @@ public class main_ivan_mario {
 			break;
 		}
 		
+		turno(0);
+		
 	}
 	
 	private static void turno(int n) {
@@ -95,48 +97,62 @@ public class main_ivan_mario {
 		
 	}
 	
+	private static void atacar() {
+		calcular.ataque(true);
+		calcular.setEneEsquiva(false);
+		turno(0);
+	}
+	
+	private static void esquivar() {
+		calcular.setPerEsquiva(true);
+		esqui = 1;
+		turno(0);
+	}
+	
+	private static void beber() {
+		data.infoMahou(personaje);
+		personaje.setEstado("Paralizado");
+		turno(0);
+	}
+	
+	private static void sanar() {
+		data.infoSanadora(personaje);
+		personaje.setEstado("Activo");
+		turno(0);
+	}
+	
+	private static void stats() {
+		data.stats(personaje);
+		data.enemyStats(enemy);
+		turno(1);
+	}
+	
 	private static void switchAcciones(int sel){
 		
 		switch(sel){
 		
-		case 1://ATACAR
-			calcular.ataque(true);
-			calcular.setEneEsquiva(false);
+		case 1:
+			atacar();
 			if( enemy.stats(false, 0, 0) <= 0) {break;}
-			turno(0);
 			break;
-			
-		case 2://ESQUIVAR
-			calcular.setPerEsquiva(true);
-			esqui = 1;
-			turno(0);
+		case 2:
+			esquivar();
 			break;
-			
-		case 3://BEBER MAHOU
-			data.infoMahou(personaje);
-			personaje.setEstado("Paralizado");
-			turno(0);
+		case 3:
+			beber();
 			break;
-			
-		case 4://VAPEAR
-			data.infoSanadora(personaje);
-			turno(0);
+		case 4:
+			sanar();
 			break;
-			
-		case 5://COGER OBJETO
+		case 5:
 			cogerObjeto();
-			turno(0);
 			break;
-			
-		case 6://STATS
-			data.stats(personaje);
-			data.enemyStats(enemy);
-			turno(1);
+		case 6:
+			stats();
 			break;
-			
 		case 7:
-				data.end();
-				break;
+			data.end();
+			break;
 		}
 
 	}
@@ -145,17 +161,12 @@ public class main_ivan_mario {
 		
 		switch(sel){
 		
-		case 4://VAPEAR
-			data.infoSanadora(personaje);
-			personaje.setEstado("Activo");
-			turno(0);
+		case 4:
+			sanar();
 			break;			
-		case 6://STATS
-			data.stats(personaje);
-			data.enemyStats(enemy);
-			turno(1);
+		case 6:
+			stats();
 			break;
-			
 		case 7:
 			data.end();
 			break;
@@ -199,9 +210,7 @@ public class main_ivan_mario {
 	}
 	
 	private static void enemigo() {
-							
-		//abstract factory
-				
+											
 		EnemyFactory loc = null;
 		
 		switch(mundo) {
@@ -222,7 +231,7 @@ public class main_ivan_mario {
 			
 	}
 	
-	private static void mundo() {
+	private static void setMundo() {
 		
 		String munrand[] = {"Calle","Jungla","Playa"};
 		
@@ -230,8 +239,12 @@ public class main_ivan_mario {
 		mundo = munrand[rand];
 					
 		data.infoMundo(rand);
-		
 		data.espera(1000);
+		infoMundo();
+		
+	}
+	
+	private static void infoMundo() {
 		
 		if(mundo == personaje.getMundo()) {
 			
@@ -254,6 +267,45 @@ public class main_ivan_mario {
 			
 	}
 	
+	private static void ataqueEnemy() {
+		
+		int a = calcular.ataque(false);
+		
+		if(personaje.getVida() <= 0) {
+			data.espera(1000);
+			data.personajeEliminado();
+			}
+		
+		calcular.setPerEsquiva(false);
+		
+		if(a==1) {
+			
+			data.tipoAtaque();
+			tipoAtaqueEnemy();
+			
+		}
+	
+		
+	}
+	
+	private static void tipoAtaqueEnemy() {
+		switch(enemy.getEstrategia().tipo()) {
+		
+		case "Paralizado":
+			data.ataqueHelado();
+			personaje.setEstado(enemy.getEstrategia().tipo());
+			break;
+		case "Herido":
+			data.ataqueVeneno();
+			herido = 2;	
+			break;
+		case "Activo":
+			data.ataqueNormal();
+			break;
+		
+		}
+	}
+	
 	private static void eleccionEnemy() {
 		
 		data.espera(1000);
@@ -263,49 +315,8 @@ public class main_ivan_mario {
 		
 		if(enemy.getAccion().info() == 1) {
 			
-			int a = calcular.ataque(false);
-			if(personaje.getVida() <= 0) {data.espera(1000);data.personajeEliminado();}
-			calcular.setPerEsquiva(false);
-			if(a==1) {
-				
-				System.out.printf(
-						 "╠══════════════════════════════════╣\n"
-					   + "║         « Tipo de ataque »       ║\n"
-					   + "║                                  ║\n"
-					   + "║   El ataque enmigo era de tipo:  ║\n");
-				
-				switch(enemy.getEstrategia().tipo()) {
-				
-				case "Paralizado":
-					System.out.printf(
-						     "║            « Helado »            ║\n"
-						   + "║                                  ║\n"
-						   + "║       Este ataque te paraliza    ║\n"
-						   + "╚══════════════════════════════════╝\n");
-					personaje.setEstado(enemy.getEstrategia().tipo());
-					break;
-				case "Herido":
-					System.out.printf(
-						     "║           « Veneno »             ║\n"
-						   + "║                                  ║\n"
-						   + "║    Este ataque te deja herido    ║\n"
-						   + "║        Recibes 5 de danio        ║\n"
-						   + "║         Durante 2 turnos         ║\n"
-						   + "╚══════════════════════════════════╝\n");
-					herido = 2;
-					break;
-				case "Activo":
-					System.out.printf(
-						     "║            « Normal »            ║\n"
-						   + "║                                  ║\n"
-						   + "║   Este ataque no tiene efectos   ║\n"
-						   + "╚══════════════════════════════════╝\n");
-					break;
-				
-				}
-				
-			}
-			
+			ataqueEnemy();
+	
 		}else {
 			calcular.setEneEsquiva(true);
 			esqui2 = 1;
