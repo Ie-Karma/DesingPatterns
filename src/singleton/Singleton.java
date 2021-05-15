@@ -42,67 +42,106 @@ public final class Singleton {
 		this.enemy = enemy;
 	}
 	
+	private void enemigoEsquiva() {
+		
+		System.out.printf(
+				 "╔══════════════════════════════════╗\n"
+			   + "║           « Esquivado »          ║\n"
+			   + "║                                  ║\n"
+			   + "║      El enemigo ha esquivado     ║\n"
+			   + "║             tu ataque            ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			);
+		
+	}
+	
+	private void enemigoAcierta() {
+		
+		enemy.recibir(personaje.atacar());
+		
+		System.out.printf(
+				 "╔══════════════════════════════════╗\n"
+			   + "║           « Acertado »           ║\n"
+			   + "║                                  ║\n"
+			   + "║       Has acertado tu ataque     ║\n"
+			   + "║  le haces %02d de danio al enemigo ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			,personaje.atacar());
+	}
+	
+	private void personajeEsquiva(){
+		System.out.printf(
+				 "╔══════════════════════════════════╗\n"
+			   + "║           « Esquivado »          ║\n"
+			   + "║                                  ║\n"
+			   + "║        Has logrado esquivar      ║\n"
+			   + "║          el ataque enemigo       ║\n"
+			   + "╚══════════════════════════════════╝\n"
+			);
+	}
+	
+	private void personajeAcierta() {
+		personaje.recibir(enemy.stats(false, 1, 0));
+		
+		System.out.printf(
+				 "╔══════════════════════════════════╗\n"
+			   + "║           « Acertado »           ║\n"
+			   + "║                                  ║\n"
+			   + "║    No has logrado esquivarlo     ║\n"
+			   + "║  el enemigo te hace %02d de danio  ║\n"
+			   + "╠══════════════════════════════════╣\n"
+			,enemy.stats(false, 1, 0));
+	}
+	
+	private int ataqueEnemigo() {
+		
+		int sat = 0;
+		
+		if((enemy.stats(false, 2, 0)<=(Math.random()*10)) && eneEsquiva) {
+			
+			enemigoEsquiva();
+			
+		}else {
+			
+			sat = 1;
+			enemigoAcierta();
+			
+		}
+		
+		return sat;
+		
+	}
+	
+	private int ataquePersonaje() {
+		
+		int sat = 0;
+		
+		if((personaje.esquivar()<=(Math.random()*10)) && perEsquiva) {
+			
+			personajeEsquiva();
+			
+		}else {
+			
+			sat = 1;
+			personajeAcierta();
+			
+		}
+		
+		return sat;
+		
+	}
+	
 	public int ataque(boolean prin) {
 		
 		int sat = 0;
 		
 		if(prin) {
 			
-			if((enemy.stats(false, 2, 0)<=(Math.random()*10)) && eneEsquiva) {
-				
-				System.out.printf(
-						 "╔══════════════════════════════════╗\n"
-					   + "║           « Esquivado »          ║\n"
-					   + "║                                  ║\n"
-					   + "║      El enemigo ha esquivado     ║\n"
-					   + "║             tu ataque            ║\n"
-					   + "╚══════════════════════════════════╝\n"
-					);
-				
-			}else {
-				
-				enemy.recibir(personaje.atacar());
-				sat = 1;
-				
-				System.out.printf(
-						 "╔══════════════════════════════════╗\n"
-					   + "║           « Acertado »           ║\n"
-					   + "║                                  ║\n"
-					   + "║       Has acertado tu ataque     ║\n"
-					   + "║  le haces %02d de danio al enemigo ║\n"
-					   + "╚══════════════════════════════════╝\n"
-					,personaje.atacar());
-				
-			}
+			sat = ataqueEnemigo();
 			
 		}else {
 			
-			if((personaje.esquivar()<=(Math.random()*10)) && perEsquiva) {
-				
-				System.out.printf(
-						 "╔══════════════════════════════════╗\n"
-					   + "║           « Esquivado »          ║\n"
-					   + "║                                  ║\n"
-					   + "║        Has logrado esquivar      ║\n"
-					   + "║          el ataque enemigo       ║\n"
-					   + "╚══════════════════════════════════╝\n"
-					);
-				
-			}else {
-				
-				personaje.recibir(enemy.stats(false, 1, 0));
-				sat = 1;
-				
-				System.out.printf(
-						 "╔══════════════════════════════════╗\n"
-					   + "║           « Acertado »           ║\n"
-					   + "║                                  ║\n"
-					   + "║    No has logrado esquivarlo     ║\n"
-					   + "║  el enemigo te hace %02d de danio  ║\n"
-					   + "╠══════════════════════════════════╣\n"
-					,enemy.stats(false, 1, 0));
-				
-			}
+			sat = ataquePersonaje();
 			
 		}
 		
