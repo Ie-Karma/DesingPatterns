@@ -4,8 +4,6 @@ import java.util.Scanner;
 import abstract_factory.*;
 import decorator.*;
 import singleton.Singleton;
-import strategy.*;
-import template_method.*;
 
 public class main_ivan_mario {
 
@@ -14,10 +12,6 @@ public class main_ivan_mario {
 	private static int per;
 	private static String mundo;
 	private static EnemyController enemy;
-	@SuppressWarnings("unused")
-	private static TemplateAcciones accionesEnemigo;
-	@SuppressWarnings("unused")
-	private static Strategy estrategia;
 	private static Singleton calcular;
 	private static int esqui = 0;
 	private static int esqui2 = 0;
