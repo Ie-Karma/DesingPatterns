@@ -94,7 +94,7 @@ public class main_ivan_mario {
 	private static void atacar() {
 		calcular.ataque(true);
 		calcular.setEneEsquiva(false);
-		turno(0);
+		if(enemy.stats(false, 0, 0) > 0) {turno(0);}
 	}
 	
 	private static void esquivar() {
@@ -169,30 +169,36 @@ public class main_ivan_mario {
 	}
 	
 	@SuppressWarnings({ "resource" })
+	private static void bucleAcciones() {
+	    Scanner scanner = new Scanner(System.in);
+
+		compro(esqui);
+		calcular.setPersonaje(personaje);
+		calcular.setEnemy(enemy);
+						
+		if( enemy.stats(false, 0, 0) <= 0) {return;}
+		
+		if(personaje.getEstado() != "Paralizado") {
+			
+			data.accion();
+			switchAcciones(scanner.nextInt());
+			
+		}else {
+			
+			data.accionParalizado();
+			switchAccionesPara(scanner.nextInt());
+			
+		}
+		
+	}
+	
 	private static void accionesPer(){
 		
-	    Scanner scanner = new Scanner(System.in);
 		esqui = 0;
 		
 			do {
 				
-				compro(esqui);
-				calcular.setPersonaje(personaje);
-				calcular.setEnemy(enemy);
-								
-				if( enemy.stats(false, 0, 0) <= 0) {break;}
-				
-				if(personaje.getEstado() != "Paralizado") {
-					
-					data.accion();
-					switchAcciones(scanner.nextInt());
-					
-				}else {
-					
-					data.accionParalizado();
-					switchAccionesPara(scanner.nextInt());
-					
-				}
+				bucleAcciones();
 							
 			}while(enemy.stats(false, 0, 0)>0);
 			

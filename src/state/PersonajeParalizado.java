@@ -20,8 +20,7 @@ public class PersonajeParalizado extends EstadoPersonaje{
 	
 	public void setEstadoParalizado() {
 		
-		personaje.setStats(1, 0); 
-		personaje.setStats(2, 0);	
+		personaje.setPara();
 		
 	}
 	

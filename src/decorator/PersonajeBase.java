@@ -8,7 +8,6 @@ public class PersonajeBase implements Personaje{
 	public int statsDario[] = {200,10,5};
 	public int statsCheeto[] = {250,20,3};
 	
-	
 	// Atributos del Personaje
 	int num;
 	private String mundo;
@@ -50,6 +49,13 @@ public class PersonajeBase implements Personaje{
 		
 	}
 	
+	public void setPara() {
+		
+		ataque = 0;
+		destreza = 0;
+		
+	}
+	
 	public String getNombre() {
 		return nombre;	
 	}
@@ -70,7 +76,6 @@ public class PersonajeBase implements Personaje{
 		return destreza;		
 	}
 	
-	@Override
 	public void setStats(int n,int val) {
 
 		//usamos este metodo para cambiar los valores de los parametros principales del personaje
@@ -83,10 +88,10 @@ public class PersonajeBase implements Personaje{
 					statsCheeto[0] = vida;
 
 			break;
-			case 1:  ataque = val;
-			statsOrslok[1] = ataque;
-			statsDario[1] = ataque;
-			statsCheeto[1] = ataque;
+			case 1: ataque = val;
+					statsOrslok[1] = ataque;
+					statsDario[1] = ataque;
+					statsCheeto[1] = ataque;
 			break;
 			case 2:
 				destreza = val;
