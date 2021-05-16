@@ -8,10 +8,4 @@ public class Hielo implements Strategy{
 		return "Paralizado";
 	}
 
-	@Override
-	public int ataque() {
-		// TODO Auto-generated method stub
-		return 0;
-	}	
-
 }

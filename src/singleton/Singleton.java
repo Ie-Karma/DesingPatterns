@@ -16,7 +16,7 @@ public final class Singleton {
 		
 	}
 	
-	public static Singleton getCalculadora() {
+	public static Singleton instance() {
 		
 		if(instancia == null) {
 			

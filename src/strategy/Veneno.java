@@ -8,10 +8,4 @@ public class Veneno implements Strategy{
 		return "Herido";
 	}
 
-	@Override
-	public int ataque() {
-		// TODO Auto-generated method stub
-		return 0;
-	}	
-
 }

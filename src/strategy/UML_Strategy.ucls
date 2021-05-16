@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="strategy.Veneno" project="DesignPatterns_DS" 
     file="/DesignPatterns_DS/src/strategy/Veneno.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="87" x="310" y="258"/>    
+    <position height="-1" width="-1" x="898" y="684"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="strategy.ContextStrategy" project="DesignPatterns_DS" 
     file="/DesignPatterns_DS/src/strategy/ContextStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="153" x="437" y="258"/>    
+    <position height="-1" width="-1" x="786" y="410"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <interface id="3" language="java" name="strategy.Strategy" project="DesignPatterns_DS" 
     file="/DesignPatterns_DS/src/strategy/Strategy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="103" x="534" y="415"/>    
+    <position height="-1" width="-1" x="989" y="410"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </interface>  
   <class id="4" language="java" name="strategy.Hielo" project="DesignPatterns_DS" 
     file="/DesignPatterns_DS/src/strategy/Hielo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="87" x="630" y="258"/>    
+    <position height="-1" width="-1" x="1029" y="684"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,30 +39,64 @@
   </class>  
   <class id="5" language="java" name="strategy.Normal" project="DesignPatterns_DS" 
     file="/DesignPatterns_DS/src/strategy/Normal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="87" x="757" y="258"/>    
+    <position height="-1" width="-1" x="1156" y="684"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="6">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="7">    
+  <class id="6" language="java" name="abstract_factory.EnemyController" project="DesignPatterns_DS" 
+    file="/DesignPatterns_DS/src/abstract_factory/EnemyController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="508" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="controlador.main_ivan_mario" project="DesignPatterns_DS" 
+    file="/DesignPatterns_DS/src/controlador/main_ivan_mario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="254" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="8">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="9" name="estrategia"/>      
+      <multiplicity id="10" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="11">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="8" name="estrategia"/>      
-      <multiplicity id="9" minimum="0" maximum="1"/>    
+      <attribute id="12" name="estrategia"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="10">    
+  <realization id="14">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  
-  <realization id="11">    
+  <association id="15">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="16" name="enemy"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="18">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <realization id="19">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  

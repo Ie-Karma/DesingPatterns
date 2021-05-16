@@ -2,7 +2,7 @@ package template_method;
 
 public abstract class TemplateAcciones {
 	
-	public final void Actuar() {
+	public final void actuar() {
 		
 		inicioTurno();
 		espera(1000);

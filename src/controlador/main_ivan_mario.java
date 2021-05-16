@@ -24,7 +24,7 @@ public class main_ivan_mario {
 		int n = data.printInfo();
 		personaje = new PersonajeBase(n);
 		per = n;
-		calcular = Singleton.getCalculadora();
+		calcular = Singleton.instance();
 		
 		while(personaje.getVida() > 0) {
 			partida();
@@ -32,7 +32,7 @@ public class main_ivan_mario {
 		
 	}
 
-	public static void partida() {		
+	private static void partida() {		
 		
 		personaje.setEstado("Activo");
 		NMundo++;
@@ -176,7 +176,7 @@ public class main_ivan_mario {
 		calcular.setPersonaje(personaje);
 		calcular.setEnemy(enemy);
 						
-		if( enemy.stats(false, 0, 0) <= 0) {return;}
+		if(enemy.stats(false, 0, 0) <= 0) {return;}
 		
 		if(personaje.getEstado() != "Paralizado") {
 			
@@ -289,11 +289,11 @@ public class main_ivan_mario {
 	}
 	
 	private static void tipoAtaqueEnemy() {
-		switch(enemy.getEstrategia().tipo()) {
+		switch(enemy.getEstrategia()) {
 		
 		case "Paralizado":
 			data.ataqueHelado();
-			personaje.setEstado(enemy.getEstrategia().tipo());
+			personaje.setEstado(enemy.getEstrategia());
 			break;
 		case "Herido":
 			data.ataqueVeneno();
@@ -311,7 +311,7 @@ public class main_ivan_mario {
 		data.espera(1000);
 		
 		enemy.setAccion();
-		enemy.getAccion().Actuar();
+		enemy.getAccion().actuar();
 		
 		if(enemy.getAccion().info() == 1) {
 			

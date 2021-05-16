@@ -6,14 +6,12 @@ import template_method.*;
 public class EnemyController {
 	
 	//creamos los distintos tipos de enemigos de forma general
-	@SuppressWarnings("unused")
-	private EnemyFactory enemy;
-	private Strategy estrategia;
 	private TemplateAcciones accion;
 	private MDLR mdlr;
 	private Frank frank;
 	private Guiri guiri;
 	private int num;
+	private ContextStrategy estrategia;
 	
 	public EnemyController(int n,EnemyFactory e) {
 		
@@ -21,7 +19,6 @@ public class EnemyController {
 		//dada esa Factoria podemos crear el enemigo solicitado mediante int n
 		
 		num = n;
-		enemy = e;
 				
 		switch(num) {
 		
@@ -81,16 +78,17 @@ public class EnemyController {
 
 	private void setEstrategia() {
 		
+		
 		switch((int)(Math.random()*3)) {
 		
 		case 0:
-			estrategia = new Normal();
+			estrategia = new ContextStrategy(new Normal());
 			break;
 		case 1:
-			estrategia = new Hielo();
+			estrategia = new ContextStrategy(new Hielo());
 			break;
 		case 2:
-			estrategia = new Veneno();
+			estrategia = new ContextStrategy(new Veneno());
 			break;
 		
 		}
@@ -103,8 +101,8 @@ public class EnemyController {
 		
 	}
 	
-	public Strategy getEstrategia() {
-		return estrategia;
+	public String getEstrategia() {
+		return estrategia.estrategia();
 	}
 	
 	public TemplateAcciones getAccion() {
@@ -121,7 +119,7 @@ public class EnemyController {
 			break;
 		case 1:
 			accion = new AccionEsquivar();
-			estrategia = new Normal();
+			estrategia = new ContextStrategy(new Normal());
 			break;
 		
 		}

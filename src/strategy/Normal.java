@@ -8,9 +8,4 @@ public class Normal implements Strategy{
 		return "Activo";
 	}
 
-	@Override
-	public int ataque() {
-		// TODO Auto-generated method stub
-		return 0;
-	}	
 }
